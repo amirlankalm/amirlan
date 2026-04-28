@@ -1,0 +1,52 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans-lab: "Satoshi", "Inter", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-mono-lab: "SFMono-Regular", "SF Mono", Consolas, "Liberation Mono", monospace;
+}
+
+:root {
+  color-scheme: dark;
+  background: #0f0f0d;
+  color: #ebe7dc;
+  font-family: var(--font-sans-lab);
+  text-rendering: geometricPrecision;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100dvh;
+  margin: 0;
+  background: #0f0f0d;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #ebe7dc;
+}
+
+::selection {
+  color: #0f0f0d;
+  background: #ebe7dc;
+}
+
+.font-mono {
+  font-family: var(--font-mono-lab);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
