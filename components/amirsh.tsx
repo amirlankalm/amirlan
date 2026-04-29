@@ -16,13 +16,30 @@ type Line = {
   text: string;
 };
 
+const accessCodeHash =
+  "679a46aa41d83bfbeb7585ae3203e3f246f02d1d70039471926bdd6d1805e4d5";
 
 const intro: Line[] = [
+  { id: 1, kind: "output", text: "amirsh 0.1.0" },
+  { id: 2, kind: "output", text: "access code required." },
+];
+
+const unlockedIntro: Line[] = [
   { id: 1, kind: "output", text: "amirsh 0.1.0" },
   { id: 2, kind: "output", text: "type help to see commands." },
 ];
 
 const prompt = "amir@labs:~$";
+const lockedPrompt = "access:";
+
+async function sha256Hex(value: string) {
+  const encoded = new TextEncoder().encode(value);
+  const digest = await crypto.subtle.digest("SHA-256", encoded);
+
+  return Array.from(new Uint8Array(digest))
+    .map((byte) => byte.toString(16).padStart(2, "0"))
+    .join("");
+}
 
 function runCommand(raw: string) {
   const input = raw.trim().toLowerCase();
@@ -70,6 +87,7 @@ function runCommand(raw: string) {
 
 export function Amirsh() {
   const [open, setOpen] = useState(false);
+  const [unlocked, setUnlocked] = useState(false);
   const [value, setValue] = useState("");
   const [lines, setLines] = useState<Line[]>(intro);
   const [position, setPosition] = useState({ x: 28, y: 96 });
@@ -195,11 +213,33 @@ export function Amirsh() {
     ]);
   }
 
-  function onSubmit(event: FormEvent<HTMLFormElement>) {
+  async function onSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     const command = value;
     setValue("");
     setHistoryIndex(null);
+
+    if (!unlocked) {
+      append("input", `${lockedPrompt} ${command ? "********" : ""}`);
+
+      if (!command.trim()) {
+        append("output", "access code required.");
+        return;
+      }
+
+      const submittedHash = await sha256Hex(command);
+
+      if (submittedHash !== accessCodeHash) {
+        append("output", "access denied.");
+        return;
+      }
+
+      setUnlocked(true);
+      append("output", "access granted.");
+      append("output", "type help to see commands.");
+      return;
+    }
+
     append("input", `${prompt} ${command}`);
 
     if (command.trim()) {
@@ -209,7 +249,7 @@ export function Amirsh() {
     const output = runCommand(command);
 
     if (output.includes("__clear__")) {
-      setLines(intro);
+      setLines(unlockedIntro);
       return;
     }
 
@@ -312,7 +352,7 @@ export function Amirsh() {
 
             <form onSubmit={onSubmit} className="flex min-w-max items-center gap-2">
               <label htmlFor="amirsh-input" className="font-mono text-[#f1eadf]">
-                {prompt}
+                {unlocked ? prompt : lockedPrompt}
               </label>
               <input
                 id="amirsh-input"
@@ -320,10 +360,11 @@ export function Amirsh() {
                 value={value}
                 onChange={(event) => setValue(event.target.value)}
                 onKeyDown={onKeyDown}
+                type={unlocked ? "text" : "password"}
                 className="w-[36ch] bg-transparent font-mono text-[#f1eadf] caret-[#f1eadf] outline-none"
                 autoComplete="off"
                 spellCheck={false}
-                aria-label="amirsh command"
+                aria-label={unlocked ? "amirsh command" : "amirsh access code"}
               />
             </form>
           </div>
