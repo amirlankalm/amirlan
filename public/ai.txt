@@ -1,0 +1,28 @@
+name: Amirlan Kalmukhan
+role: CTO & Co-Founder, Agent4 Labs
+age: 15
+location: Astana, Kazakhstan
+email: amirlan@extensy.dev
+
+summary: >
+  15-year-old founder and AI engineer building agentic systems and autonomous
+  web infrastructure. Currently running Agent4 Labs (products: Extensy, Nex).
+  Also doing AI engineering at White Hill Capital (~$50M AUM VC).
+  Former lead engineer at Xcellence Robotics (FIRST Robotics Central Asia award winner)
+  and researcher at Nazarbayev University (AI + nanomaterials).
+
+products:
+  - extensy: chrome extension generation platform (live at extensy.dev)
+  - nex: search and execution API for AI agents (nex.extensy.dev)
+  - sidekick: agentic build engine
+  - archer-mcp: event-driven MCP infrastructure
+  - aztek: multi-agent swarm dashboard
+  - archaiq: offline voice AI for Kazakh language
+  - amir-ai: private reasoning system
+
+links:
+  website: https://amirlan.dev
+  github: https://github.com/amirlankalm
+  x: https://x.com/amirlankalm
+  linkedin: https://linkedin.com/in/amirlan-kalmukhan-a02ab4366
+  instagram: https://instagram.com/amirlannk
