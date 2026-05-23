@@ -23,7 +23,7 @@ export async function generateMetadata({ params }: ProductPageProps) {
   }
 
   return {
-    title: `${product.name} | amirlan labs`,
+    title: `${product.name} | amirlan kalmukhan`,
     description: product.description,
   };
 }
@@ -42,51 +42,60 @@ export default async function ProductPage({ params }: ProductPageProps) {
         <p>{product.description}</p>
       </PageTitle>
 
-      <Section title="core info">
-        <div className="grid gap-5 text-stone-400 sm:grid-cols-[150px_1fr]">
-          <p className="font-mono text-xs uppercase tracking-[0.14em] text-stone-600">
+      <Section title="details">
+        <div className="grid gap-y-5 text-stone-400 sm:grid-cols-[140px_1fr] sm:gap-y-6">
+          <p className="font-mono text-xs uppercase tracking-[0.14em] text-stone-600 sm:pt-px">
             stage
           </p>
           <p>{product.stage}</p>
 
-          <p className="font-mono text-xs uppercase tracking-[0.14em] text-stone-600">
+          <p className="font-mono text-xs uppercase tracking-[0.14em] text-stone-600 sm:pt-px">
             status
           </p>
           <p>{product.status}</p>
 
-          <p className="font-mono text-xs uppercase tracking-[0.14em] text-stone-600">
+          <p className="font-mono text-xs uppercase tracking-[0.14em] text-stone-600 sm:pt-px">
             tech
           </p>
-          <p>{product.tech.join(" / ")}</p>
+          <div className="flex flex-wrap gap-x-3 gap-y-1">
+            {product.tech.map((t) => (
+              <span key={t} className="font-mono text-sm text-stone-500">
+                {t}
+              </span>
+            ))}
+          </div>
 
-          <p className="font-mono text-xs uppercase tracking-[0.14em] text-stone-600">
-            repo
-          </p>
-          <p>
-            {product.github ? (
-              <TextLink href={product.github}>github</TextLink>
-            ) : (
-              <span className="text-stone-600">private</span>
-            )}
-          </p>
+          {product.github ? (
+            <>
+              <p className="font-mono text-xs uppercase tracking-[0.14em] text-stone-600 sm:pt-px">
+                repo
+              </p>
+              <p>
+                <TextLink href={product.github}>github →</TextLink>
+              </p>
+            </>
+          ) : null}
 
-          <p className="font-mono text-xs uppercase tracking-[0.14em] text-stone-600">
-            website
-          </p>
-          <p>
-            {product.website ? (
-              <TextLink href={product.website}>website</TextLink>
-            ) : (
-              <span className="text-stone-600">not public yet</span>
-            )}
-          </p>
+          {product.website ? (
+            <>
+              <p className="font-mono text-xs uppercase tracking-[0.14em] text-stone-600 sm:pt-px">
+                website
+              </p>
+              <p>
+                <TextLink href={product.website}>{product.website.replace("https://", "")} →</TextLink>
+              </p>
+            </>
+          ) : null}
         </div>
       </Section>
 
-      <Section title="notes">
-        <ul className="space-y-3 text-xl leading-relaxed text-stone-300">
+      <Section title="what it does">
+        <ul className="space-y-4">
           {product.notes.map((note) => (
-            <li key={note}>{note}</li>
+            <li key={note} className="flex gap-4 leading-relaxed text-stone-300">
+              <span className="mt-[0.55em] h-px w-4 shrink-0 bg-stone-700" />
+              <span>{note}</span>
+            </li>
           ))}
         </ul>
       </Section>

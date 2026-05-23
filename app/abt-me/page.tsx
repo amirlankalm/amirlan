@@ -1,40 +1,52 @@
 import { PageTitle, Section, Shell } from "@/components/site";
 
 const stack = [
-  "next.js",
   "typescript",
-  "postgresql",
-  "aws",
-  "c++",
-  "node.js",
   "python",
+  "next.js",
+  "langgraph",
+  "supabase",
+  "playwright",
+  "mcp sdk",
+  "postgresql",
+  "node.js",
+  "c++",
 ];
+
+export const metadata = {
+  title: "abt me | amirlan kalmukhan",
+  description: "15 y/o founder from kazakhstan, cto @ agent4 labs.",
+};
 
 export default function AboutPage() {
   return (
     <Shell>
       <PageTitle label="abt me" title="yo, i'm amirlan">
         <p>
-          i am a 15 y/o founder from kazakhstan, cto & co-founder @ extensy,
-          building in the agentic ai space.
+          i'm a 15 y/o founder from kazakhstan, cto @ agent4 labs, building
+          agentic ai infra.
         </p>
       </PageTitle>
 
       <Section title="short version">
         <div className="space-y-5 text-xl leading-relaxed text-stone-300">
           <p>
-            rn i am building extensy: describe what you want, get a fully
-            working browser extension, and get it published.
+            rn i'm running agent4 labs — our products are extensy (idea to
+            chrome extension, shipped) and nex (search + execution api for ai
+            agents). we got offered a safe from a plug and play affiliated
+            accelerator and turned it down.
           </p>
           <p>
-            before this i did research at nu. now most of my work is around
-            agentic ai, browser automation, and infra for agents that can
-            actually execute work on the web.
+            before this i did research at nazarbayev university on ai +
+            nanomaterials, and led the engineering team at xcellence robotics
+            — we won robot performance and modular design at first robotics
+            central asia.
           </p>
           <p>
-            amirlan labs is the product lab around that work: extensy,
-            sidekick, archer mcp, amir ai, and experiments around autonomous
-            web systems.
+            i also do ai engineering at white hill capital (~$50m aum vc),
+            building internal agentic pipelines for due diligence. and built
+            archaiq on the side — offline voice ai for the kazakh language,
+            because nobody else was going to.
           </p>
         </div>
       </Section>
@@ -51,23 +63,29 @@ export default function AboutPage() {
         <div className="flex gap-5 text-stone-300">
           <a
             href="https://x.com/amirlankalm"
-            className="underline decoration-white/20 underline-offset-4 hover:text-stone-100"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="underline decoration-white/20 underline-offset-4 hover:text-stone-100 transition"
           >
             x
           </a>
           <a
-            href="https://instagram.com/amirlankalm"
-            className="underline decoration-white/20 underline-offset-4 hover:text-stone-100"
+            href="https://github.com/amirlankalm"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="underline decoration-white/20 underline-offset-4 hover:text-stone-100 transition"
           >
-            instagram
+            github
+          </a>
+          <a
+            href="https://www.linkedin.com/in/amirlan-kalmukhan-a02ab4366/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="underline decoration-white/20 underline-offset-4 hover:text-stone-100 transition"
+          >
+            linkedin
           </a>
         </div>
-      </Section>
-
-      <Section title="try extensy">
-        <p className="text-xl leading-relaxed text-stone-300">
-          pls try extensy out. if u dm me on insta or x i can give u credits.
-        </p>
       </Section>
     </Shell>
   );

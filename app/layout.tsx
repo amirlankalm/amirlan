@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "amirlan labs",
+  title: "amirlan kalmukhan",
   description:
-    "amirlan labs, a product lab building agentic ai and agentic infra for autonomous web.",
+    "amirlan kalmukhan — building agentic ai systems and autonomous web infrastructure from astana, kazakhstan.",
 };
 
 export default function RootLayout({

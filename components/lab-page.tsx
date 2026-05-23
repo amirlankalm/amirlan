@@ -1,36 +1,45 @@
 import Link from "next/link";
-import { socials } from "@/lib/content";
-import { PageTitle, Shell, TextLink } from "@/components/site";
+import { PageTitle, Section, Shell } from "@/components/site";
 
 export function LabPage() {
   return (
     <Shell>
-      <PageTitle label="astana/sf" title="amirlan labs">
+      <PageTitle label="astana, kazakhstan" title="yo, i'm amirlan">
         <p>
-          amirlan labs, a product lab of amirlan kalmukhan building agentic ai
-          and agentic infra for autonomous web.
+          15 y/o founder from kazakhstan, cto @ agent4 labs, building agentic
+          ai infra.
         </p>
       </PageTitle>
 
-      <div className="grid gap-3 border-t border-white/10 py-10 text-xl text-stone-300">
-        <Link href="/products" className="hover:text-stone-100">
-          products
-        </Link>
-        <Link href="/blog" className="hover:text-stone-100">
-          blog
-        </Link>
-        <Link href="/socials" className="hover:text-stone-100">
-          socials
-        </Link>
-      </div>
+      <Section title="what i'm doing">
+        <div className="space-y-5 text-xl leading-relaxed text-stone-300">
+          <p>
+            running agent4 labs — we build{" "}
+            <Link href="/products/extensy" className="underline decoration-white/20 underline-offset-4 hover:text-stone-100 hover:decoration-white/50 transition">
+              extensy
+            </Link>{" "}
+            and{" "}
+            <Link href="/products/nex" className="underline decoration-white/20 underline-offset-4 hover:text-stone-100 hover:decoration-white/50 transition">
+              nex
+            </Link>
+            . turned down a safe from a plug and play affiliated accelerator.
+          </p>
+          <p>
+            also doing ai engineering at white hill capital (~$50m aum vc),
+            building agentic pipelines for due diligence. and a few experiments
+            on the side.
+          </p>
+        </div>
+      </Section>
 
-      <div className="flex flex-wrap gap-x-6 gap-y-3 border-t border-white/10 py-10 text-stone-400">
-        {socials.map((social) => (
-          <TextLink key={social.label} href={social.href}>
-            {social.label}
-          </TextLink>
-        ))}
-      </div>
+      <Section title="pages">
+        <div className="grid gap-3 text-xl text-stone-300">
+          <Link href="/experience" className="hover:text-stone-100 transition-colors">experience</Link>
+          <Link href="/products" className="hover:text-stone-100 transition-colors">products</Link>
+          <Link href="/abt-me" className="hover:text-stone-100 transition-colors">about</Link>
+          <Link href="/socials" className="hover:text-stone-100 transition-colors">socials</Link>
+        </div>
+      </Section>
     </Shell>
   );
 }
