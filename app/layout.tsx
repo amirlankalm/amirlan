@@ -39,6 +39,23 @@ export const metadata: Metadata = {
   },
 };
 
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: "Amirlan Kalmukhan",
+  url: base,
+  sameAs: [
+    "https://x.com/amirlankalm",
+    "https://github.com/amirlankalm",
+    "https://www.linkedin.com/in/amirlan-kalmukhan-a02ab4366/",
+  ],
+  jobTitle: "CTO & Co-Founder",
+  worksFor: { "@type": "Organization", name: "Agent4 Labs" },
+  knowsAbout: ["agentic ai", "chrome extensions", "web automation", "llm infrastructure"],
+  nationality: "Kazakhstani",
+  address: { "@type": "PostalAddress", addressLocality: "Astana", addressCountry: "KZ" },
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -46,7 +63,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        {children}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+      </body>
     </html>
   );
 }
