@@ -1,0 +1,12 @@
+/* TEAM */
+name: amirlan kalmukhan
+role: cto & co-founder, agent4 labs
+from: astana, kazakhstan
+contact: amirlan [at] extensy.dev
+x: @amirlankalm
+github: amirlankalm
+
+/* SITE */
+built with: next.js 16, tailwind v4, typescript
+deployed on: vercel
+last update: 2026
