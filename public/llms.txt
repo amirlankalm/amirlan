@@ -1,0 +1,41 @@
+# amirlan kalmukhan
+
+> 15 y/o founder and ai engineer from astana, kazakhstan.
+
+## who i am
+
+amirlan kalmukhan is a 15-year-old founder and ai engineer based in astana, kazakhstan.
+he is cto and co-founder of agent4 labs, where he builds agentic ai systems and autonomous
+web infrastructure.
+
+## current work
+
+- **agent4 labs** (cto & co-founder, 2026–present): building extensy and nex. turned down
+  a safe from a plug and play affiliated accelerator.
+- **white hill capital** (ai engineer, 2026–present): building internal agentic pipelines
+  for venture due diligence at a ~$50m aum vc firm.
+
+## past work
+
+- **xcellence robotics lab** (lead engineer, 2025–2026): led engineering team for
+  FIRST Robotics Central Asia. won robot performance and modular design awards.
+- **nazarbayev university** (researcher, 2025): research on ai and nanomaterials
+  (nac carbon dots). applied ml to materials characterization data.
+
+## products
+
+- **extensy** (live): describe an idea, get a chrome extension, ship it. https://extensy.dev
+- **nex** (building): search and execution api for ai agents. https://nex.extensy.dev
+- **sidekick** (building): agentic build engine for executing product work end-to-end.
+- **archer mcp** (building): event-driven mcp infrastructure for autonomous agents.
+- **aztek** (building): visual dashboard for multi-agent swarm coordination.
+- **archaiq** (experiment): offline voice ai pipeline for the kazakh language.
+- **amir ai** (experiment): personal reasoning system built on private context.
+
+## contact
+
+- email: amirlan@extensy.dev
+- x: https://x.com/amirlankalm
+- github: https://github.com/amirlankalm
+- linkedin: https://www.linkedin.com/in/amirlan-kalmukhan-a02ab4366/
+- instagram: https://instagram.com/amirlannk
