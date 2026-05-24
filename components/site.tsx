@@ -7,7 +7,7 @@ export function Shell({ children }: { children: React.ReactNode }) {
       <Header />
       {children}
       <footer className="border-t border-white/10 pb-10 pt-8 text-sm text-stone-600">
-        building quietly. shipping when useful.
+        just building.
       </footer>
       <Amirsh />
     </main>

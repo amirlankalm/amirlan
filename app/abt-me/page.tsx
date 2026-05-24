@@ -15,7 +15,7 @@ const stack = [
 
 export const metadata = {
   title: "abt me | amirlan kalmukhan",
-  description: "15 y/o founder from kazakhstan, cto @ agent4 labs.",
+  description: "15 y.o founder from kazakhstan, cto @ agent4 labs.",
 };
 
 export default function AboutPage() {
@@ -33,20 +33,18 @@ export default function AboutPage() {
           <p>
             rn i'm running agent4 labs — our products are extensy (idea to
             chrome extension, shipped) and nex (search + execution api for ai
-            agents). we got offered a safe from a plug and play affiliated
+            agents). we got offered a SAFE from a plug and play affiliated
             accelerator and turned it down.
           </p>
           <p>
             before this i did research at nazarbayev university on ai +
             nanomaterials, and led the engineering team at xcellence robotics
-            — we won robot performance and modular design at first robotics
+            where we won robot performance and modular design at first robotics
             central asia.
           </p>
           <p>
             i also do ai engineering at white hill capital (~$50m aum vc),
-            building internal agentic pipelines for due diligence. and built
-            archaiq on the side — offline voice ai for the kazakh language,
-            because nobody else was going to.
+            building internal agentic pipelines for due diligence.
           </p>
         </div>
       </Section>

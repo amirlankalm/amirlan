@@ -11,8 +11,8 @@ export default function ExperiencePage() {
     <Shell>
       <PageTitle label="background" title="experience">
         <p>
-          ai engineering at a vc firm, materials research at a top central asian
-          university, and competitive robotics — before turning 16.
+          ai engineer at a vc firm, materials research at a top central asian
+          university, and competitive robotics.
         </p>
       </PageTitle>
 
