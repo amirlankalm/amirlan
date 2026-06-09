@@ -1,16 +1,27 @@
 @import "tailwindcss";
 
 @theme {
-  --font-sans-lab: "Satoshi", "Inter", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  --font-mono-lab: "SFMono-Regular", "SF Mono", Consolas, "Liberation Mono", monospace;
+  --font-sans-lab: var(--font-geist), "Inter", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-mono-lab: var(--font-geist-mono), "SFMono-Regular", "SF Mono", Consolas, "Liberation Mono", monospace;
+
+  --color-bg: #0f0f0d;
+  --color-fg: #ebe7dc;
+
+  /* One easing for entrances (decelerate into rest); one calmer curve for loops. */
+  --ease-out-quint: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-soft: cubic-bezier(0.4, 0, 0.6, 1);
 }
 
 :root {
   color-scheme: dark;
-  background: #0f0f0d;
-  color: #ebe7dc;
+  background: var(--color-bg);
+  color: var(--color-fg);
   font-family: var(--font-sans-lab);
-  text-rendering: geometricPrecision;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  scrollbar-width: thin;
+  scrollbar-color: #2c2a26 transparent;
 }
 
 * {
@@ -22,9 +33,33 @@ html {
 }
 
 body {
+  position: relative;
   min-height: 100dvh;
   margin: 0;
-  background: #0f0f0d;
+  background: var(--color-bg);
+}
+
+/* Ambient depth — a single barely-there warm glow up top, fixed behind
+   everything. Subtle on purpose: it should register as light, not a "gradient". */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background: radial-gradient(115% 75% at 50% -12%, rgba(235, 231, 220, 0.07), transparent 58%);
+}
+
+/* Faint film grain so the flat black gains texture instead of feeling like a void. */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 160px 160px;
 }
 
 a {
@@ -32,21 +67,167 @@ a {
   text-decoration: none;
 }
 
-a:hover {
-  color: #ebe7dc;
+::selection {
+  color: var(--color-bg);
+  background: var(--color-fg);
 }
 
-::selection {
-  color: #0f0f0d;
-  background: #ebe7dc;
+::-webkit-scrollbar {
+  width: 11px;
+  height: 11px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #2a2824;
+  border: 3px solid var(--color-bg);
+  border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #3a3833;
+}
+
+:focus-visible {
+  outline: 1px solid rgba(235, 231, 220, 0.55);
+  outline-offset: 3px;
+  border-radius: 2px;
 }
 
 .font-mono {
   font-family: var(--font-mono-lab);
 }
 
+/* Frosted backdrop with the -webkit- prefix Tailwind v4 omits — needed for
+   Safari / iOS, the most likely browsers to open this site. */
+.frost {
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+}
+
+/* ── Motion language ──────────────────────────────────────────────
+   One easing curve, one entrance. Everything below the fold animates
+   on mount with a small stagger — so each route change reads as a
+   composed reveal rather than a hard cut. */
+
+@keyframes enter {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes enter-soft {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.reveal {
+  opacity: 0;
+  animation: enter 0.6s var(--ease-out-quint) forwards;
+  animation-delay: var(--reveal-delay, 0ms);
+}
+
+.reveal-soft {
+  opacity: 0;
+  animation: enter-soft 0.8s ease forwards;
+  animation-delay: var(--reveal-delay, 0ms);
+}
+
+/* Underline that grows from the left on hover — the quiet signature
+   of the whole site. Applied to nav, lists, and inline links. */
+.link-grow {
+  background-image: linear-gradient(currentColor, currentColor);
+  background-size: 0% 1px;
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  transition:
+    background-size 0.4s var(--ease-out-quint),
+    color 0.25s ease;
+}
+
+.link-grow:hover,
+.link-grow:focus-visible,
+.link-grow[aria-current="page"] {
+  background-size: 100% 1px;
+}
+
+/* Inline prose links: always faintly underlined, brighten + thicken on hover. */
+.link-inline {
+  color: var(--color-fg);
+  background-image: linear-gradient(currentColor, currentColor);
+  background-size: 100% 1px;
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  opacity: 0.92;
+  transition:
+    opacity 0.25s ease,
+    background-size 0.35s var(--ease-out-quint);
+  padding-bottom: 1px;
+}
+
+.link-inline:hover,
+.link-inline:focus-visible {
+  opacity: 1;
+  background-size: 100% 1.5px;
+}
+
+/* A small status dot that breathes. */
+.pulse-dot {
+  position: relative;
+}
+
+.pulse-dot::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: inherit;
+  animation: breathe 3s var(--ease-soft) infinite;
+}
+
+/* Opacity fades out a touch before the scale completes, so the loop reset
+   lands while the ring is already invisible — a calm breath, not a ping tick. */
+@keyframes breathe {
+  0% {
+    transform: scale(1);
+    opacity: 0.5;
+  }
+  60% {
+    opacity: 0;
+  }
+  100% {
+    transform: scale(2.2);
+    opacity: 0;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
+  }
+
+  .reveal,
+  .reveal-soft {
+    opacity: 1;
+    animation: none;
+    transform: none;
+  }
+
+  .pulse-dot::after {
+    animation: none;
+  }
+
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
   }
 }

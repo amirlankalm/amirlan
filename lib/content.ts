@@ -31,6 +31,17 @@ export const experiences: Experience[] = [
     ],
   },
   {
+    org: "speko",
+    orgDetail: "yc s26",
+    role: "software engineer",
+    period: "may 2026 — present",
+    points: [
+      "built a retrieval layer that returns context in sub-millisecond time — tuned for voice agents, where latency isn't a metric you read, it's a pause the caller hears",
+      "trained custom asr/stt and tts models from the ground up for kazakh and uzbek — two low-resource languages most speech stacks quietly skip",
+      "designed and shipped the landing page end to end",
+    ],
+  },
+  {
     org: "white hill capital",
     orgDetail: "~$50m aum vc",
     role: "ai engineer",

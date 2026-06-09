@@ -113,11 +113,15 @@ export function Amirsh() {
   }, [open]);
 
   useEffect(() => {
+    const reduce = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    ).matches;
+
     window.requestAnimationFrame(() => {
       scrollRef.current?.scrollTo({
         top: scrollRef.current.scrollHeight,
         left: 0,
-        behavior: "smooth",
+        behavior: reduce ? "auto" : "smooth",
       });
     });
   }, [lines]);
@@ -301,7 +305,7 @@ export function Amirsh() {
         type="button"
         aria-label="open amirsh terminal"
         onClick={() => setOpen((current) => !current)}
-        className="fixed bottom-5 right-5 z-20 border border-white/5 bg-transparent px-2 py-1 font-mono text-[11px] text-stone-700 opacity-35 transition hover:border-white/10 hover:bg-black/40 hover:text-stone-300 hover:opacity-100"
+        className="fixed bottom-5 right-5 z-20 border border-white/5 bg-transparent px-2 py-1 font-mono text-[11px] text-stone-500 opacity-60 transition hover:border-white/10 hover:bg-black/40 hover:text-stone-300 hover:opacity-100"
       >
         &gt;_
       </button>

@@ -1,5 +1,12 @@
 import Link from "next/link";
-import { PageTitle, Section, Shell } from "@/components/site";
+import { PageTitle, Section, Shell, TextLink } from "@/components/site";
+
+const pages = [
+  { href: "/experience", label: "experience" },
+  { href: "/products", label: "products" },
+  { href: "/abt-me", label: "about" },
+  { href: "/socials", label: "socials" },
+];
 
 export function LabPage() {
   return (
@@ -11,33 +18,35 @@ export function LabPage() {
         </p>
       </PageTitle>
 
-      <Section title="what i'm doing">
+      <Section title="what i'm doing" delay={240}>
         <div className="space-y-5 text-xl leading-relaxed text-stone-300">
           <p>
             running agent4 labs — we build{" "}
-            <Link href="/products/extensy" className="underline decoration-white/20 underline-offset-4 hover:text-stone-100 hover:decoration-white/50 transition">
-              extensy
-            </Link>{" "}
-            and{" "}
-            <Link href="/products/nex" className="underline decoration-white/20 underline-offset-4 hover:text-stone-100 hover:decoration-white/50 transition">
-              nex
-            </Link>
-            . turned down a safe from a plug and play affiliated accelerator.
+            <TextLink href="/products/extensy">extensy</TextLink> and{" "}
+            <TextLink href="/products/nex">nex</TextLink>. turned down a safe
+            from a plug and play affiliated accelerator.
           </p>
           <p>
-            also doing ai engineering at white hill capital (~$50m aum vc),
-            building agentic pipelines for due diligence. and a few experiments
-            on the side.
+            also a software engineer at{" "}
+            <TextLink href="https://speko.ai">speko</TextLink> (yc s26) —
+            real-time voice ai and speech models for kazakh and uzbek — and ai
+            engineering at white hill capital (~$50m aum vc), building agentic
+            pipelines for due diligence.
           </p>
         </div>
       </Section>
 
-      <Section title="pages">
+      <Section title="pages" delay={320}>
         <div className="grid gap-3 text-xl text-stone-300">
-          <Link href="/experience" className="hover:text-stone-100 transition-colors">experience</Link>
-          <Link href="/products" className="hover:text-stone-100 transition-colors">products</Link>
-          <Link href="/abt-me" className="hover:text-stone-100 transition-colors">about</Link>
-          <Link href="/socials" className="hover:text-stone-100 transition-colors">socials</Link>
+          {pages.map((page) => (
+            <Link
+              key={page.href}
+              href={page.href}
+              className="link-grow w-fit text-stone-300 hover:text-stone-100"
+            >
+              {page.label}
+            </Link>
+          ))}
         </div>
       </Section>
     </Shell>
