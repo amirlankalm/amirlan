@@ -1,6 +1,7 @@
 import { CSSProperties } from "react";
 import { Amirsh } from "@/components/amirsh";
 import { Header } from "@/components/header";
+import { SoundFooter } from "@/components/sound-footer";
 
 // One cadence for the whole site. Lists start at STAGGER_BASE and step by
 // STAGGER_STEP, capped so the last row never trickles in late.
@@ -21,16 +22,14 @@ export function Shell({ children }: { children: React.ReactNode }) {
     <main className="mx-auto min-h-dvh max-w-[760px] px-5 py-6 sm:px-8 sm:py-10">
       <Header />
       {children}
-      <footer className="mt-8 flex items-center gap-2.5 border-t border-white/10 pb-10 pt-8 text-sm text-stone-500">
-        <span className="pulse-dot relative inline-block h-1.5 w-1.5 rounded-full bg-stone-500" />
-        just building.
-      </footer>
+      <SoundFooter />
       <Amirsh />
     </main>
   );
 }
 
 export { Header };
+export { TextLink } from "@/components/interactive";
 
 export function PageTitle({
   label,
@@ -49,7 +48,7 @@ export function PageTitle({
         </p>
       ) : null}
       <h1
-        className="reveal max-w-[14ch] text-5xl font-medium leading-[0.96] tracking-[-0.03em] text-stone-100 sm:text-7xl"
+        className="reveal max-w-[14ch] text-5xl font-semibold leading-[0.95] tracking-[-0.035em] text-stone-100 sm:text-7xl"
         style={delayStyle(70)}
       >
         {title}
@@ -85,27 +84,5 @@ export function Section({
       </h2>
       {children}
     </section>
-  );
-}
-
-export function TextLink({
-  href,
-  children,
-}: {
-  href: string;
-  children: React.ReactNode;
-}) {
-  const external = href.startsWith("http");
-
-  return (
-    <a
-      href={href}
-      target={external ? "_blank" : undefined}
-      rel={external ? "noopener noreferrer" : undefined}
-      className="link-inline"
-    >
-      {children}
-      {external ? <span className="sr-only"> (opens in new tab)</span> : null}
-    </a>
   );
 }

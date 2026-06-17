@@ -1,11 +1,16 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist_Mono } from "next/font/google";
+import localFont from "next/font/local";
 import { Analytics } from "@vercel/analytics/next";
+import { Providers } from "@/components/providers";
 import "./globals.css";
 
-const geist = Geist({
-  subsets: ["latin"],
-  variable: "--font-geist",
+// Self-hosted General Sans (variable) — the geometric grotesk register, in the
+// spirit of the Neue Montreal used across the reference sites.
+const generalSans = localFont({
+  src: "./fonts/GeneralSans-Variable.woff2",
+  variable: "--font-general",
+  weight: "200 700",
   display: "swap",
 });
 
@@ -76,9 +81,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${geist.variable} ${geistMono.variable}`}>
+    <html lang="en" className={`${generalSans.variable} ${geistMono.variable}`}>
       <body>
-        {children}
+        <Providers>{children}</Providers>
         <Analytics />
         <script
           type="application/ld+json"

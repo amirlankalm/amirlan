@@ -1,4 +1,5 @@
 import { PageTitle, Section, Shell, TextLink } from "@/components/site";
+import { SoundLink } from "@/components/interactive";
 
 const stack = [
   "typescript",
@@ -24,40 +25,44 @@ const links = [
 
 export const metadata = {
   title: "abt me",
-  description: "15 y/o founder from kazakhstan, cto @ agent4 labs.",
+  description:
+    "the longer story — research and robotics, then founding agent4 labs, speko (yc s26), and white hill capital.",
 };
 
 export default function AboutPage() {
   return (
     <Shell>
-      <PageTitle label="abt me" title="yo, i'm amirlan">
+      <PageTitle label="abt me" title="the longer story">
         <p>
-          i'm a 15 y/o founder from kazakhstan, cto @ agent4 labs, building
-          agentic ai infra.
+          how a 15 y/o from astana ended up cto of a startup, a swe at a yc
+          company, and an ai engineer at a vc — all at once.
         </p>
       </PageTitle>
 
-      <Section title="short version" delay={240}>
+      <Section title="the arc" delay={240}>
         <div className="space-y-5 text-xl leading-relaxed text-stone-300">
           <p>
-            rn i'm running agent4 labs — our products are extensy (idea to
-            chrome extension, shipped) and nex (search + execution api for ai
-            agents). we got offered a safe from a plug and play affiliated
-            accelerator and turned it down.
-          </p>
-          <p>
-            before this i did research at nazarbayev university on ai +
-            nanomaterials, and led the engineering team at xcellence robotics
-            where we won robot performance and modular design at first robotics
+            i&apos;ve been building things since i was a kid in astana. before
+            any of this, i did research at nazarbayev university on ai +
+            nanomaterials, and led the engineering team at xcellence robotics —
+            we won robot performance and modular design at first robotics
             central asia.
           </p>
           <p>
-            i also work as a software engineer at{" "}
-            <TextLink href="https://speko.ai">speko</TextLink> (yc s26) —
-            building sub-millisecond retrieval for voice agents and training
-            speech models for kazakh and uzbek — and do ai engineering at white
-            hill capital (~$50m aum vc), building internal agentic pipelines for
-            due diligence.
+            then i started agent4 labs, where i&apos;m cto &amp; co-founder. we
+            build <TextLink href="https://extensy.dev">extensy</TextLink> —
+            describe an idea, get a working chrome extension, ship it — and{" "}
+            <TextLink href="https://nex.extensy.dev">nex</TextLink>, a search +
+            execution api for ai agents. we were offered a safe from a plug and
+            play affiliated accelerator and turned it down.
+          </p>
+          <p>
+            alongside agent4 i&apos;m a software engineer at{" "}
+            <TextLink href="https://speko.ai">speko</TextLink> (yc s26) — a
+            voice-ai gateway that routes stt, llm, and tts through one api to
+            the proven-best provider per call — and an ai engineer at white hill
+            capital (~$50m aum vc), building internal agentic pipelines for due
+            diligence.
           </p>
         </div>
       </Section>
@@ -78,15 +83,13 @@ export default function AboutPage() {
       <Section title="find me" delay={400}>
         <div className="flex gap-6 text-stone-300">
           {links.map((link) => (
-            <a
+            <SoundLink
               key={link.label}
               href={link.href}
-              target="_blank"
-              rel="noopener noreferrer"
               className="link-grow text-stone-300 hover:text-stone-100"
             >
               {link.label}
-            </a>
+            </SoundLink>
           ))}
         </div>
       </Section>

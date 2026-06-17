@@ -2,18 +2,18 @@ import { experiences } from "@/lib/content";
 import { PageTitle, Shell, staggerDelay } from "@/components/site";
 
 export const metadata = {
-  title: "experience",
-  description: "voice ai engineer, ai engineer, researcher, and robotics lead.",
+  title: "work",
+  description: "cto & co-founder, voice-ai engineer, ai engineer, researcher, and robotics lead.",
 };
 
-export default function ExperiencePage() {
+export default function WorkPage() {
   return (
     <Shell>
-      <PageTitle label="background" title="experience">
+      <PageTitle label="background" title="work">
         <p>
-          real-time voice ai at a yc-backed startup, ai engineering at a vc
-          firm, materials research at a top central asian university, and
-          competitive robotics.
+          founding agent4 labs, real-time voice ai at a yc-backed startup, ai
+          engineering at a vc firm, materials research at a top central asian
+          university, and competitive robotics.
         </p>
       </PageTitle>
 

@@ -3,16 +3,19 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
+import { useUISound } from "@/components/sound-provider";
+import { useHoverTick } from "@/components/interactive";
 
 const nav = [
+  { href: "/work", label: "work" },
   { href: "/abt-me", label: "about" },
-  { href: "/experience", label: "experience" },
-  { href: "/products", label: "products" },
   { href: "/socials", label: "socials" },
 ];
 
 export function Header() {
   const pathname = usePathname();
+  const play = useUISound();
+  const tick = useHoverTick();
   const [scrolled, setScrolled] = useState(false);
   const scrolledRef = useRef(false);
 
@@ -56,6 +59,8 @@ export function Header() {
       <Link
         href="/"
         aria-current={onHome ? "page" : undefined}
+        onPointerEnter={tick}
+        onClick={() => play("nav")}
         className={`link-grow ${onHome ? "text-stone-100" : "text-stone-400"}`}
       >
         amirlan
@@ -69,6 +74,8 @@ export function Header() {
               key={item.href}
               href={item.href}
               aria-current={active ? "page" : undefined}
+              onPointerEnter={tick}
+              onClick={() => play("nav")}
               className={`link-grow ${active ? "text-stone-100" : ""}`}
             >
               {item.label}

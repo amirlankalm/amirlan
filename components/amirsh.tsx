@@ -9,6 +9,7 @@ import {
   useState,
 } from "react";
 import { animeGirls } from "@/lib/animegirls";
+import { useUISound } from "@/components/sound-provider";
 
 type Line = {
   id: number;
@@ -105,12 +106,24 @@ export function Amirsh() {
     height: 560,
   });
   const nextId = useRef(3);
+  const play = useUISound();
 
   useEffect(() => {
     if (open) {
       inputRef.current?.focus();
     }
   }, [open]);
+
+  // The command palette can summon the terminal.
+  useEffect(() => {
+    function openFromCommand() {
+      setOpen(true);
+      play("open");
+    }
+    window.addEventListener("amirlan:terminal", openFromCommand);
+    return () =>
+      window.removeEventListener("amirlan:terminal", openFromCommand);
+  }, [play]);
 
   useEffect(() => {
     const reduce = window.matchMedia(
@@ -228,6 +241,7 @@ export function Amirsh() {
 
       if (!command.trim()) {
         append("output", "access code required.");
+        play("deny");
         return;
       }
 
@@ -235,12 +249,14 @@ export function Amirsh() {
 
       if (submittedHash !== accessCodeHash) {
         append("output", "access denied.");
+        play("deny");
         return;
       }
 
       setUnlocked(true);
       append("output", "access granted.");
       append("output", "type help to see commands.");
+      play("grant");
       return;
     }
 
@@ -248,6 +264,7 @@ export function Amirsh() {
 
     if (command.trim()) {
       setHistory((current) => [...current, command]);
+      play("submit");
     }
 
     const output = runCommand(command);
@@ -258,6 +275,7 @@ export function Amirsh() {
     }
 
     if (output.includes("__exit__")) {
+      play("close");
       setOpen(false);
       return;
     }
@@ -304,15 +322,19 @@ export function Amirsh() {
       <button
         type="button"
         aria-label="open amirsh terminal"
-        onClick={() => setOpen((current) => !current)}
-        className="fixed bottom-5 right-5 z-20 border border-white/5 bg-transparent px-2 py-1 font-mono text-[11px] text-stone-500 opacity-60 transition hover:border-white/10 hover:bg-black/40 hover:text-stone-300 hover:opacity-100"
+        onClick={() => {
+          const next = !open;
+          play(next ? "open" : "close");
+          setOpen(next);
+        }}
+        className="press fixed bottom-5 right-5 z-20 border border-white/5 bg-transparent px-2 py-1 font-mono text-[11px] text-stone-500 opacity-60 transition hover:border-white/10 hover:bg-black/40 hover:text-stone-300 hover:opacity-100"
       >
         &gt;_
       </button>
 
       {open ? (
         <div
-          className="fixed z-30 flex flex-col overflow-hidden border border-stone-800 bg-black shadow-[0_24px_90px_rgba(0,0,0,0.86)]"
+          className="term-window fixed z-30 flex flex-col overflow-hidden border border-stone-800 bg-black shadow-[0_24px_90px_rgba(0,0,0,0.86)]"
           style={{ left: position.x, top: position.y, width: size.width, height: size.height }}
         >
           <div
@@ -331,7 +353,10 @@ export function Amirsh() {
             <button
               type="button"
               onPointerDown={(event) => event.stopPropagation()}
-              onClick={() => setOpen(false)}
+              onClick={() => {
+                play("close");
+                setOpen(false);
+              }}
               className="cursor-pointer text-stone-600 hover:text-stone-200"
             >
               close

@@ -1,6 +1,7 @@
 import { socials } from "@/lib/content";
 import { IconGithub, IconInstagram, IconLinkedin, IconMail, IconX } from "@/components/icons";
 import { PageTitle, Shell, staggerDelay } from "@/components/site";
+import { SoundLink } from "@/components/interactive";
 
 export const metadata = {
   title: "socials",
@@ -29,11 +30,9 @@ export default function SocialsPage() {
             const external = social.href.startsWith("http");
 
             return (
-              <a
+              <SoundLink
                 key={social.label}
                 href={social.href}
-                target={external ? "_blank" : undefined}
-                rel={external ? "noopener noreferrer" : undefined}
                 style={staggerDelay(i)}
                 className="reveal group flex items-center gap-4 bg-[#0f0f0d] px-6 py-5 transition-colors hover:bg-white/[0.035]"
               >
@@ -55,7 +54,7 @@ export default function SocialsPage() {
                 >
                   {external ? "↗" : "→"}
                 </span>
-              </a>
+              </SoundLink>
             );
           })}
         </div>
