@@ -1,5 +1,5 @@
 import { PageTitle, Section, Shell, TextLink } from "@/components/site";
-import { SoundLink } from "@/components/interactive";
+import { DrawLink, SoundLink } from "@/components/interactive";
 
 const stack = [
   "typescript",
@@ -26,7 +26,7 @@ const links = [
 export const metadata = {
   title: "abt me",
   description:
-    "the longer story — research and robotics, then founding agent4 labs, speko (yc s26), and white hill capital.",
+    "the longer story — research and robotics in astana, agent4 labs, and engineering at speko (yc s26) and white hill capital.",
 };
 
 export default function AboutPage() {
@@ -34,36 +34,44 @@ export default function AboutPage() {
     <Shell>
       <PageTitle label="abt me" title="the longer story">
         <p>
-          how a 15 y/o from astana ended up cto of a startup, a swe at a yc
-          company, and an ai engineer at a vc — all at once.
+          how i got from a research lab in astana to building ai products at 15.
         </p>
       </PageTitle>
 
       <Section title="the arc" delay={240}>
         <div className="space-y-5 text-xl leading-relaxed text-stone-300">
           <p>
-            i&apos;ve been building things since i was a kid in astana. before
-            any of this, i did research at nazarbayev university on ai +
-            nanomaterials, and led the engineering team at xcellence robotics —
-            we won robot performance and modular design at first robotics
-            central asia.
+            i got into research at 14. by the summer of 2025 i was interning at{" "}
+            <DrawLink href="https://nu.edu.kz" drawDelay={950}>
+              nazarbayev university
+            </DrawLink>
+            , the best research university in kazakhstan, working on ai and
+            nanomaterials, specifically nac carbon dots.
           </p>
           <p>
-            then i started agent4 labs, where i&apos;m cto &amp; co-founder. we
-            build <TextLink href="https://extensy.dev">extensy</TextLink> —
-            describe an idea, get a working chrome extension, ship it — and{" "}
-            <TextLink href="https://nex.extensy.dev">nex</TextLink>, a search +
-            execution api for ai agents. we were offered a safe from a plug and
-            play affiliated accelerator and turned it down.
+            i liked the research but got tired of the manual side of it; a lot
+            of it was just washing labware. around the same time i got into
+            robotics and started competing in FIRST. our team made it to the
+            central asian championship and won two awards.
           </p>
           <p>
-            alongside agent4 i&apos;m a software engineer at{" "}
-            <TextLink href="https://speko.ai">speko</TextLink> (yc s26) — a
-            voice-ai gateway that routes stt, llm, and tts through one api to
-            the proven-best provider per call — and an ai engineer at white hill
-            capital (~$50m aum vc), building internal agentic pipelines for due
-            diligence.
+            after that i started coding and building my own products. the first
+            was agent4. now i&apos;m cto and co-founder of agent4 labs, where we
+            build <TextLink href="https://extensy.dev">extensy</TextLink> and{" "}
+            <TextLink href="https://nex.extensy.dev">nex</TextLink>. early on an
+            accelerator affiliated with plug and play offered us a safe, and we
+            turned it down because the terms were bad.
           </p>
+          <p>
+            then i picked up internships as a software engineer at{" "}
+            <TextLink href="https://speko.ai">speko</TextLink> (yc s26) and white
+            hill capital. at speko i built a custom retrieval layer that cut our
+            agents&apos; latency by 100x. i also built an mcp server that lets
+            you use a voice agent from inside claude code; you can type something
+            like &apos;claude, book me a table at 5pm here&apos; and it makes the
+            call.
+          </p>
+          <p>building more soon.</p>
         </div>
       </Section>
 

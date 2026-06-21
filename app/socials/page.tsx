@@ -50,7 +50,7 @@ export default function SocialsPage() {
                 ) : null}
                 <span
                   aria-hidden="true"
-                  className="ml-auto text-stone-600 opacity-60 transition-colors duration-300 group-hover:text-stone-300 group-hover:opacity-100"
+                  className="ml-auto text-stone-600 opacity-60 transition-[color,opacity,transform] duration-300 ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:translate-x-0.5 group-hover:text-stone-300 group-hover:opacity-100"
                 >
                   {external ? "↗" : "→"}
                 </span>

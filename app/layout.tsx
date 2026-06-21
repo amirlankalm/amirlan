@@ -81,7 +81,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${generalSans.variable} ${geistMono.variable}`}>
+    <html
+      lang="en"
+      data-scroll-behavior="smooth"
+      className={`${generalSans.variable} ${geistMono.variable}`}
+    >
       <body>
         <Providers>{children}</Providers>
         <Analytics />

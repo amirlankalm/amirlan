@@ -1,5 +1,6 @@
 "use client";
 
+import type { CSSProperties } from "react";
 import Link from "next/link";
 import { useUISound } from "@/components/sound-provider";
 import type { UISoundName } from "@/lib/sounds";
@@ -35,6 +36,44 @@ export function TextLink({
       target={external ? "_blank" : undefined}
       rel={external ? "noopener noreferrer" : undefined}
       className="link-inline"
+      onPointerEnter={tick}
+      onClick={() => play("link")}
+    >
+      {children}
+      {external ? <span className="sr-only"> (opens in new tab)</span> : null}
+    </a>
+  );
+}
+
+/**
+ * Inline link whose underline draws itself in on load — the hero's signature,
+ * reused for one focal link in prose. drawDelay tunes when the line arrives so
+ * it lands just after the surrounding text has revealed.
+ */
+export function DrawLink({
+  href,
+  children,
+  drawDelay,
+}: {
+  href: string;
+  children: React.ReactNode;
+  drawDelay?: number;
+}) {
+  const play = useUISound();
+  const tick = useHoverTick();
+  const external = href.startsWith("http");
+
+  return (
+    <a
+      href={href}
+      target={external ? "_blank" : undefined}
+      rel={external ? "noopener noreferrer" : undefined}
+      className="link-draw"
+      style={
+        drawDelay
+          ? ({ "--draw-delay": `${drawDelay}ms` } as CSSProperties)
+          : undefined
+      }
       onPointerEnter={tick}
       onClick={() => play("link")}
     >

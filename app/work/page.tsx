@@ -46,7 +46,7 @@ export default function WorkPage() {
                   key={point}
                   className="flex gap-3 leading-relaxed text-stone-400 transition-colors group-hover:text-stone-300"
                 >
-                  <span className="mt-[0.4em] h-px w-4 shrink-0 bg-stone-600 transition-colors group-hover:bg-stone-500" />
+                  <span className="mt-[0.4em] h-px w-4 shrink-0 origin-left bg-stone-600 transition-[transform,background-color] duration-300 ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:scale-x-[1.6] group-hover:bg-stone-400" />
                   <span>{point}</span>
                 </li>
               ))}

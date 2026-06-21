@@ -250,7 +250,7 @@ export function CommandPalette() {
         onClick={close}
       />
 
-      <div className="cmd-panel relative w-full max-w-[560px] overflow-hidden rounded-xl border border-white/12 bg-[#15140f]/95 shadow-[0_32px_120px_rgba(0,0,0,0.7)]">
+      <div className="cmd-panel relative w-full max-w-[560px] overflow-hidden rounded-xl border border-white/12 bg-[#15140f]/95 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.05),0_2px_8px_rgba(0,0,0,0.4),0_16px_40px_rgba(0,0,0,0.5),0_40px_100px_rgba(0,0,0,0.6)]">
         <div className="flex items-center gap-3 border-b border-white/8 px-4">
           <Glyph d={DOT} />
           <input
@@ -301,7 +301,7 @@ export function CommandPalette() {
                     aria-selected={isActive}
                     onClick={() => runAction(action)}
                     onPointerMove={() => setActive(index)}
-                    className={`flex w-full items-center gap-3 rounded-lg px-3 py-2.5 text-left text-[15px] transition-colors ${
+                    className={`flex w-full items-center gap-3 rounded-md px-3 py-2.5 text-left text-[15px] transition-[background-color,transform] duration-150 active:scale-[0.985] ${
                       isActive ? "bg-white/[0.07] text-stone-100" : "text-stone-400"
                     }`}
                   >

@@ -22,6 +22,8 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  font-synthesis: none;
+  font-optical-sizing: auto;
   scrollbar-width: thin;
   scrollbar-color: #2c2a26 transparent;
 }
@@ -62,6 +64,18 @@ body::after {
   opacity: 0.035;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   background-size: 160px 160px;
+}
+
+/* Typography niceties — balanced headings, orphan-free body, no faux weights.
+   Each is invisible alone; together they make type read as set, not rendered. */
+h1,
+h2,
+h3 {
+  text-wrap: balance;
+}
+
+p {
+  text-wrap: pretty;
 }
 
 a {
@@ -249,6 +263,42 @@ a {
   }
 }
 
+/* An inline prose link whose underline draws itself on load — the hero's
+   flourish, reused for a single focal link in the story. No static underline;
+   the line arrives, then brightens on hover. */
+.link-draw {
+  position: relative;
+  color: var(--color-fg);
+  white-space: nowrap;
+  opacity: 0.94;
+  transition: opacity 0.25s ease;
+}
+
+.link-draw:hover,
+.link-draw:focus-visible {
+  opacity: 1;
+}
+
+.link-draw::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -0.05em;
+  height: 1.5px;
+  background: currentColor;
+  opacity: 0.8;
+  transform: scaleX(0);
+  transform-origin: left center;
+  animation: draw 0.7s var(--ease-out-quint) forwards;
+  animation-delay: var(--draw-delay, 1000ms);
+}
+
+.link-draw:hover::after,
+.link-draw:focus-visible::after {
+  opacity: 1;
+}
+
 /* ── Command palette ──────────────────────────────────────────────
    Modal, so it scales from center (Emil: modals are exempt from
    origin-awareness). Enter is composed; exit is faster and tighter. */
@@ -327,7 +377,8 @@ a {
   }
 
   /* Keep the underline, lose the motion. */
-  .draw::after {
+  .draw::after,
+  .link-draw::after {
     animation: none;
     transform: scaleX(1);
   }
