@@ -42,8 +42,11 @@ export function LabPage() {
             <TextLink href="https://nex.extensy.dev">nex</TextLink>. on the
             side: voice ai at{" "}
             <TextLink href="https://speko.ai">speko</TextLink> (yc s26), and
-            agentic due-diligence pipelines at white hill capital (~$50m aum
-            vc).
+            agentic due-diligence pipelines at{" "}
+            <TextLink href="https://whitehillcapital.io">
+              white hill capital
+            </TextLink>{" "}
+            (~$50m aum vc).
           </p>
         </div>
       </Section>
