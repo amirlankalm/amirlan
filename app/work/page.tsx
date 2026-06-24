@@ -1,5 +1,6 @@
 import { experiences } from "@/lib/content";
 import { PageTitle, Shell, staggerDelay } from "@/components/site";
+import { SoundLink } from "@/components/interactive";
 
 export const metadata = {
   title: "work",
@@ -27,7 +28,17 @@ export default function WorkPage() {
             <div className="mb-6 flex flex-col gap-1 sm:flex-row sm:items-baseline sm:justify-between sm:gap-6">
               <div className="flex flex-col gap-1">
                 <p className="font-mono text-xs uppercase tracking-[0.16em] text-stone-400">
-                  {exp.org}
+                  {exp.href ? (
+                    <SoundLink
+                      href={exp.href}
+                      className="link-grow text-stone-400 hover:text-stone-200"
+                    >
+                      {exp.org}
+                      <span className="sr-only"> (opens in new tab)</span>
+                    </SoundLink>
+                  ) : (
+                    exp.org
+                  )}
                   {exp.orgDetail ? (
                     <span className="ml-3 normal-case tracking-normal text-stone-500">
                       {exp.orgDetail}

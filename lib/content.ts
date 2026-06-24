@@ -1,6 +1,7 @@
 export type Experience = {
   org: string;
   orgDetail?: string;
+  href?: string;
   role: string;
   period: string;
   points: string[];
@@ -20,6 +21,7 @@ export const experiences: Experience[] = [
   {
     org: "speko",
     orgDetail: "yc s26",
+    href: "https://speko.ai",
     role: "software engineer",
     period: "may 2026 — present",
     points: [
@@ -32,6 +34,7 @@ export const experiences: Experience[] = [
   {
     org: "white hill capital",
     orgDetail: "~$50m aum vc",
+    href: "https://whitehillcapital.io",
     role: "ai engineer",
     period: "2026 — present",
     points: [

@@ -64,8 +64,11 @@ export default function AboutPage() {
           </p>
           <p>
             then i picked up internships as a software engineer at{" "}
-            <TextLink href="https://speko.ai">speko</TextLink> (yc s26) and white
-            hill capital. at speko i built a custom retrieval layer that cut our
+            <TextLink href="https://speko.ai">speko</TextLink> (yc s26) and{" "}
+            <TextLink href="https://whitehillcapital.io">
+              white hill capital
+            </TextLink>
+            . at speko i built a custom retrieval layer that cut our
             agents&apos; latency by 100x. i also built an mcp server that lets
             you use a voice agent from inside claude code; you can type something
             like &apos;claude, book me a table at 5pm here&apos; and it makes the
