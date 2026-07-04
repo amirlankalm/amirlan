@@ -1,4 +1,4 @@
-# Amirlan Lab
+# Amirlan 
 
 A simple founder lab site built with Next.js App Router and Tailwind CSS v4.
 
