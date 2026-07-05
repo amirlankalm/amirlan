@@ -14,10 +14,11 @@ export function LabPage() {
         <div className="reveal space-y-6" style={delayStyle(140)}>
           <p>
             i&apos;m a founding engineer at{" "}
-            <TextLink href="https://speko.ai">speko</TextLink> (yc s26), where
-            we build voice agents that test and heal themselves. i&apos;m focused
-            on latency, retrieval and making agentic conversations feel instant
-            and natural.
+            <TextLink href="https://speko.ai">speko</TextLink>
+            {" "}
+            (yc s26), where we build voice agents that test and heal themselves.
+            i&apos;m focused on latency, retrieval and making agentic
+            conversations feel instant and natural.
           </p>
           <p>
             i&apos;m 15. i started coding and building things at 14. before that,
