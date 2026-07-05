@@ -4,10 +4,10 @@ export default function manifest(): MetadataRoute.Manifest {
   return {
     name: "amirlan kalmukhan",
     short_name: "amirlan",
-    description: "15 y/o founder from astana, kazakhstan. cto @ agent4 labs.",
+    description: "founding engineer at speko (yc s26), building voice-ai infrastructure.",
     start_url: "/",
     display: "standalone",
-    background_color: "#0f0f0d",
-    theme_color: "#0f0f0d",
+    background_color: "#eef8f0",
+    theme_color: "#eef8f0",
   };
 }

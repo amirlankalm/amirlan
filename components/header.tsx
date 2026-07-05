@@ -7,8 +7,7 @@ import { useUISound } from "@/components/sound-provider";
 import { useHoverTick } from "@/components/interactive";
 
 const nav = [
-  { href: "/work", label: "work" },
-  { href: "/abt-me", label: "about" },
+  { href: "/blog", label: "blog" },
   { href: "/socials", label: "socials" },
 ];
 
@@ -50,9 +49,9 @@ export function Header() {
 
   return (
     <header
-      className={`frost sticky top-0 z-40 -mx-5 mb-24 flex items-center justify-between px-5 py-4 text-sm transition-[background-color,border-color] duration-500 sm:-mx-8 sm:mb-32 sm:px-8 ${
+      className={`frost sticky top-0 z-40 -mx-6 mb-14 flex items-center justify-between px-6 py-4 text-[18px] transition-[background-color,border-color] duration-500 sm:-mx-8 sm:mb-20 sm:px-8 ${
         scrolled
-          ? "border-b border-white/10 bg-[#0f0f0d]/65"
+          ? "border-b border-[color:var(--color-line)] bg-[color:var(--color-bg)]/78"
           : "border-b border-transparent bg-transparent"
       }`}
     >
@@ -61,11 +60,11 @@ export function Header() {
         aria-current={onHome ? "page" : undefined}
         onPointerEnter={tick}
         onClick={() => play("nav")}
-        className={`link-grow ${onHome ? "text-stone-100" : "text-stone-400"}`}
+        className={`link-grow ${onHome ? "text-[color:var(--color-fg)]" : "text-[color:var(--color-muted)]"}`}
       >
         amirlan
       </Link>
-      <nav className="flex gap-5 text-stone-400">
+      <nav className="flex gap-4 text-[color:var(--color-muted)]">
         {nav.map((item) => {
           const active = pathname.startsWith(item.href);
 
@@ -76,7 +75,7 @@ export function Header() {
               aria-current={active ? "page" : undefined}
               onPointerEnter={tick}
               onClick={() => play("nav")}
-              className={`link-grow ${active ? "text-stone-100" : ""}`}
+              className={`link-grow ${active ? "text-[color:var(--color-fg)]" : ""}`}
             >
               {item.label}
             </Link>

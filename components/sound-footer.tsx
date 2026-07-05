@@ -32,7 +32,7 @@ function Waveform({ active }: { active: boolean }) {
 
     const draw = (flat: boolean) => {
       ctx.clearRect(0, 0, cssW, cssH);
-      ctx.strokeStyle = "rgba(235, 231, 220, 0.5)";
+      ctx.strokeStyle = "rgba(11, 81, 50, 0.5)";
       ctx.lineWidth = 1.5;
       ctx.lineJoin = "round";
       ctx.lineCap = "round";
@@ -101,7 +101,7 @@ function FlatLine() {
         y1="8"
         x2="63"
         y2="8"
-        stroke="rgba(235, 231, 220, 0.5)"
+        stroke="rgba(11, 81, 50, 0.5)"
         strokeWidth="1.5"
         strokeLinecap="round"
       />
@@ -133,7 +133,7 @@ function SoundToggle() {
       aria-pressed={enabled}
       aria-label={enabled ? "mute sound" : "unmute sound"}
       title={enabled ? "sound on" : "sound off"}
-      className="press group flex items-center gap-2 rounded-md border border-transparent px-1.5 py-1 text-stone-500 transition-colors hover:text-stone-300"
+      className="press group flex items-center gap-2 rounded-md border border-transparent px-1.5 py-1 text-[color:var(--color-muted)] transition-colors hover:text-[color:var(--color-fg)]"
       style={{ opacity: hydrated ? 1 : 0 }}
     >
       {audioReady ? <Waveform active={enabled} /> : <FlatLine />}
@@ -154,33 +154,10 @@ function SoundToggle() {
   );
 }
 
-function CommandHint() {
-  const play = useUISound();
-  return (
-    <button
-      type="button"
-      onClick={() => window.dispatchEvent(new CustomEvent("amirlan:command"))}
-      onPointerEnter={() => play("hover")}
-      aria-label="open command palette"
-      className="press flex items-center gap-1.5 rounded-md border border-white/10 px-2 py-1 font-mono text-[11px] text-stone-500 transition-colors hover:border-white/20 hover:text-stone-300"
-    >
-      <kbd className="font-sans">⌘</kbd>
-      <kbd>K</kbd>
-    </button>
-  );
-}
-
 export function SoundFooter() {
   return (
-    <footer className="mt-8 flex items-center justify-between gap-4 border-t border-white/10 pb-10 pt-8 text-sm text-stone-500">
-      <span className="flex items-center gap-2.5">
-        <span className="pulse-dot relative inline-block h-1.5 w-1.5 rounded-full bg-stone-500" />
-        just building.
-      </span>
-      <div className="flex items-center gap-2.5">
-        <CommandHint />
-        <SoundToggle />
-      </div>
+    <footer className="mt-12 flex justify-end pb-10 text-[15px] text-[color:var(--color-muted)]">
+      <SoundToggle />
     </footer>
   );
 }

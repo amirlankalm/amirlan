@@ -1,69 +1,51 @@
-import { Section, Shell, TextLink, delayStyle } from "@/components/site";
-import { SoundLink } from "@/components/interactive";
-import { LiveStatus } from "@/components/live-status";
-
-const pages = [
-  { href: "/work", label: "work" },
-  { href: "/abt-me", label: "about" },
-  { href: "/socials", label: "socials" },
-];
+import { Shell, TextLink, delayStyle } from "@/components/site";
 
 export function LabPage() {
   return (
     <Shell>
-      <section className="mb-20 sm:mb-24">
-        <p className="reveal mb-6 font-mono text-xs uppercase tracking-[0.18em] text-stone-500">
-          astana, kazakhstan
-        </p>
+      <section className="max-w-[650px] font-sans text-[20px] leading-[1.6] tracking-[-0.015em] text-[color:var(--color-fg)] sm:text-[22px]">
         <h1
-          className="reveal text-6xl font-semibold leading-[0.95] tracking-[-0.035em] text-stone-100 sm:text-[5.25rem]"
+          className="reveal mb-8 text-[20px] font-normal leading-[1.6] tracking-[-0.015em] sm:text-[22px]"
           style={delayStyle(70)}
         >
-          yo, i&apos;m amirlan
+          hey, i&apos;m amirlan.
         </h1>
-        <div
-          className="reveal mt-8 max-w-[600px] text-xl leading-[1.5] text-stone-300 sm:text-2xl"
-          style={delayStyle(150)}
+
+        <div className="reveal space-y-6" style={delayStyle(140)}>
+          <p>
+            i&apos;m a founding engineer at{" "}
+            <TextLink href="https://speko.ai">speko</TextLink> (yc s26), where
+            we build voice agents that test and heal themselves. i&apos;m focused
+            on latency, retrieval and making agentic conversations feel instant
+            and natural.
+          </p>
+          <p>
+            i&apos;m 15. i started coding and building things at 14. before that,
+            i did research and robotics.
+          </p>
+        </div>
+
+        <nav
+          className="reveal mt-8 flex flex-wrap gap-x-3 gap-y-1 text-[18px] leading-relaxed"
+          style={delayStyle(320)}
+          aria-label="primary pages"
         >
-          <p>
-            15 y/o. cto &amp; co-founder @{" "}
-            <span className="draw text-stone-100">agent4 labs</span>, and swe @
-            speko (yc s26).
-          </p>
+          <TextLink href="/blog">blog</TextLink>
+          <TextLink href="/socials">socials</TextLink>
+        </nav>
+
+        <div
+          className="reveal mt-6 flex flex-wrap gap-x-3 gap-y-1 text-[18px] leading-relaxed"
+          style={delayStyle(390)}
+        >
+          <TextLink href="https://x.com/amirlankalm">x.com</TextLink>
+          <TextLink href="https://github.com/amirlankalm">github</TextLink>
+          <TextLink href="https://www.linkedin.com/in/amirlan-kalmukhan-a02ab4366/">
+            linkedin
+          </TextLink>
+          <TextLink href="mailto:amirlan@speko.ai">amirlan@speko.ai</TextLink>
         </div>
-        <LiveStatus />
       </section>
-
-      <Section title="what i'm doing" delay={320}>
-        <div className="space-y-5 text-xl leading-relaxed text-stone-300">
-          <p>
-            running agent4 labs as cto &amp; co-founder — we build{" "}
-            <TextLink href="https://extensy.dev">extensy</TextLink> and{" "}
-            <TextLink href="https://nex.extensy.dev">nex</TextLink>. on the
-            side: voice ai at{" "}
-            <TextLink href="https://speko.ai">speko</TextLink> (yc s26), and
-            agentic due-diligence pipelines at{" "}
-            <TextLink href="https://whitehillcapital.io">
-              white hill capital
-            </TextLink>{" "}
-            (~$50m aum vc).
-          </p>
-        </div>
-      </Section>
-
-      <Section title="pages" delay={400}>
-        <div className="grid gap-3 text-xl text-stone-300">
-          {pages.map((page) => (
-            <SoundLink
-              key={page.href}
-              href={page.href}
-              className="link-grow w-fit text-stone-300 hover:text-stone-100"
-            >
-              {page.label}
-            </SoundLink>
-          ))}
-        </div>
-      </Section>
     </Shell>
   );
 }

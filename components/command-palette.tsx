@@ -20,7 +20,7 @@ type Action = {
   run: () => void;
 };
 
-const EMAIL = "amirlan@extensy.dev";
+const EMAIL = "amirlan@speko.ai";
 
 function Glyph({ d, stroke = true }: { d: string; stroke?: boolean }) {
   return (
@@ -42,7 +42,6 @@ function Glyph({ d, stroke = true }: { d: string; stroke?: boolean }) {
 
 const ARROW = "M5 12h14M13 6l6 6-6 6";
 const EXTERNAL = "M7 17 17 7M9 7h8v8";
-const TERMINAL = "M5 7l4 4-4 4M12 17h7";
 const MAIL = "M3 6h18v12H3zM3 7l9 6 9-6";
 const SOUND_ON = "M4 9v6h4l5 4V5L8 9zM16 9a3 3 0 0 1 0 6";
 const SOUND_OFF = "M4 9v6h4l5 4V5L8 9zM17 9l4 6M21 9l-4 6";
@@ -92,19 +91,9 @@ export function CommandPalette() {
 
     return [
       { id: "home", label: "home", group: "go to", keywords: "index start", glyph: <Glyph d={ARROW} />, run: go("/") },
-      { id: "work", label: "work", group: "go to", keywords: "experience background cv resume jobs", glyph: <Glyph d={ARROW} />, run: go("/work") },
-      { id: "about", label: "about", group: "go to", keywords: "abt me bio story", glyph: <Glyph d={ARROW} />, run: go("/abt-me") },
+      { id: "blog", label: "blog", group: "go to", keywords: "writing essays notes", glyph: <Glyph d={ARROW} />, run: go("/blog") },
       { id: "socials", label: "socials", group: "go to", keywords: "links contact reach", glyph: <Glyph d={ARROW} />, run: go("/socials") },
 
-      {
-        id: "terminal",
-        label: "open terminal",
-        group: "do",
-        keywords: "amirsh shell console cli",
-        hint: ">_",
-        glyph: <Glyph d={TERMINAL} />,
-        run: () => window.dispatchEvent(new CustomEvent("amirlan:terminal")),
-      },
       {
         id: "email",
         label: copied ? "copied to clipboard" : "copy email",
@@ -246,12 +235,12 @@ export function CommandPalette() {
         type="button"
         aria-label="close command palette"
         tabIndex={-1}
-        className="cmd-backdrop frost absolute inset-0 cursor-default bg-black/45"
+        className="cmd-backdrop frost absolute inset-0 cursor-default bg-[#0a4a2e]/18"
         onClick={close}
       />
 
-      <div className="cmd-panel relative w-full max-w-[560px] overflow-hidden rounded-xl border border-white/12 bg-[#15140f]/95 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.05),0_2px_8px_rgba(0,0,0,0.4),0_16px_40px_rgba(0,0,0,0.5),0_40px_100px_rgba(0,0,0,0.6)]">
-        <div className="flex items-center gap-3 border-b border-white/8 px-4">
+      <div className="cmd-panel relative w-full max-w-[560px] overflow-hidden rounded-lg border border-[color:var(--color-line)] bg-[color:var(--color-bg)]/96 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.7),0_24px_70px_rgba(10,74,46,0.14)]">
+        <div className="flex items-center gap-3 border-b border-[color:var(--color-line)] px-4 text-[color:var(--color-muted)]">
           <Glyph d={DOT} />
           <input
             ref={inputRef}
@@ -260,13 +249,13 @@ export function CommandPalette() {
               setQuery(event.target.value);
               setActive(0);
             }}
-            placeholder="type a command or search…"
+            placeholder="type a command"
             aria-label="command palette search"
             autoComplete="off"
             spellCheck={false}
-            className="w-full bg-transparent py-4 text-[15px] text-stone-100 placeholder:text-stone-600 outline-none"
+            className="w-full bg-transparent py-4 text-[15px] text-[color:var(--color-fg)] placeholder:text-[color:var(--color-muted)]/70 outline-none"
           />
-          <kbd className="hidden shrink-0 rounded border border-white/10 px-1.5 py-0.5 font-mono text-[10px] text-stone-500 sm:block">
+          <kbd className="hidden shrink-0 rounded border border-[color:var(--color-line)] px-1.5 py-0.5 font-mono text-[10px] text-[color:var(--color-muted)] sm:block">
             esc
           </kbd>
         </div>
@@ -278,7 +267,7 @@ export function CommandPalette() {
           className="max-h-[46vh] overflow-y-auto overscroll-contain p-1.5"
         >
           {results.length === 0 ? (
-            <p className="px-3 py-6 text-center text-sm text-stone-600">
+            <p className="px-3 py-6 text-center text-sm text-[color:var(--color-muted)]">
               nothing matches “{query}”.
             </p>
           ) : (
@@ -290,7 +279,7 @@ export function CommandPalette() {
               return (
                 <div key={action.id}>
                   {showGroup ? (
-                    <p className="px-3 pb-1.5 pt-3 font-mono text-[10px] uppercase tracking-[0.16em] text-stone-600">
+                    <p className="px-3 pb-1.5 pt-3 text-[12px] text-[color:var(--color-muted)]">
                       {action.group}
                     </p>
                   ) : null}
@@ -302,19 +291,19 @@ export function CommandPalette() {
                     onClick={() => runAction(action)}
                     onPointerMove={() => setActive(index)}
                     className={`flex w-full items-center gap-3 rounded-md px-3 py-2.5 text-left text-[15px] transition-[background-color,transform] duration-150 active:scale-[0.985] ${
-                      isActive ? "bg-white/[0.07] text-stone-100" : "text-stone-400"
+                      isActive ? "bg-[color:var(--color-accent)]/22 text-[color:var(--color-fg)]" : "text-[color:var(--color-muted)]"
                     }`}
                   >
                     <span
                       className={
-                        isActive ? "text-stone-200" : "text-stone-600"
+                        isActive ? "text-[color:var(--color-fg)]" : "text-[color:var(--color-muted)]"
                       }
                     >
                       {action.glyph}
                     </span>
                     <span className="flex-1">{action.label}</span>
                     {action.hint ? (
-                      <span className="font-mono text-xs text-stone-600">
+                      <span className="font-mono text-xs text-[color:var(--color-muted)]">
                         {action.hint}
                       </span>
                     ) : null}

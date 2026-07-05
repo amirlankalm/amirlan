@@ -5,17 +5,17 @@ export default function NotFound() {
   return (
     <Shell>
       <section className="mb-20 sm:mb-24">
-        <p className="reveal mb-6 font-mono text-xs uppercase tracking-[0.18em] text-stone-500">
+        <p className="reveal mb-5 text-[15px] text-[color:var(--color-muted)]">
           404
         </p>
         <h1
-          className="reveal text-5xl font-medium leading-[0.96] tracking-[-0.03em] text-stone-100 sm:text-7xl"
+          className="reveal text-4xl font-medium leading-tight text-[color:var(--color-fg)] sm:text-5xl"
           style={delayStyle(70)}
         >
           not here.
         </h1>
         <div
-          className="reveal mt-8 text-xl leading-relaxed text-stone-300"
+          className="reveal mt-8 text-xl leading-relaxed text-[color:var(--color-fg)]"
           style={delayStyle(150)}
         >
           <Link href="/" className="link-inline">
