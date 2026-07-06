@@ -15,7 +15,7 @@ import {
 import type { PlayOptions } from "@web-kits/audio";
 import { UI_PATCH, type UISoundName } from "@/lib/sounds";
 
-const VOLUME = 0.58;
+const VOLUME = 0.9;
 const STORAGE_KEY = "amirlan:sound";
 
 type PlayFn = (name: UISoundName, opts?: PlayOptions) => void;
