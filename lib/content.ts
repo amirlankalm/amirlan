@@ -1,3 +1,5 @@
+import { profile } from "@/lib/profile";
+
 export type Experience = {
   org: string;
   orgDetail?: string;
@@ -28,8 +30,8 @@ export const projects = [
 export const socials = [
   {
     label: "email",
-    href: "mailto:amirlan@speko.ai",
-    display: "amirlan@speko.ai",
+    href: `mailto:${profile.email}`,
+    display: profile.email,
     icon: "mail" as const,
   },
   {

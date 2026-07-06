@@ -3,8 +3,12 @@ import { SoundLink } from "@/components/interactive";
 import { Shell, delayStyle, staggerDelay } from "@/components/site";
 
 export const metadata = {
-  title: "socials",
-  description: "places to find or reach amirlan kalmukhan.",
+  title: "Social profiles",
+  description:
+    "Official social profiles and contact links for Amirlan Kalmukhan.",
+  alternates: {
+    canonical: "/socials",
+  },
 };
 
 export default function SocialsPage() {

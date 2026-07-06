@@ -1,10 +1,11 @@
 import type { MetadataRoute } from "next";
+import { profile } from "@/lib/profile";
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: "amirlan kalmukhan",
-    short_name: "amirlan",
-    description: "founding engineer at speko (yc s26), building voice-ai infrastructure.",
+    name: profile.name,
+    short_name: profile.givenName,
+    description: profile.shortDescription,
     start_url: "/",
     display: "standalone",
     background_color: "#eef8f0",

@@ -1,4 +1,5 @@
 import { Shell, TextLink, delayStyle } from "@/components/site";
+import { profile } from "@/lib/profile";
 
 export function LabPage() {
   return (
@@ -8,7 +9,7 @@ export function LabPage() {
           className="reveal mb-8 text-[20px] font-normal leading-[1.6] tracking-[-0.015em] sm:text-[22px]"
           style={delayStyle(70)}
         >
-          hey, i&apos;m amirlan.
+          hey, i&apos;m {profile.name.toLowerCase()}.
         </h1>
 
         <div className="reveal space-y-6" style={delayStyle(140)}>
@@ -23,6 +24,10 @@ export function LabPage() {
           <p>
             i&apos;m 15. i started coding and building things at 14. before that,
             i did research and robotics.
+          </p>
+          <p>
+            people usually find me as amirlan, amirlan kalmukhan, @amirlankalm,
+            or through work around voice ai, retrieval and agentic systems.
           </p>
         </div>
 

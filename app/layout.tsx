@@ -3,6 +3,7 @@ import { Geist_Mono } from "next/font/google";
 import localFont from "next/font/local";
 import { Analytics } from "@vercel/analytics/next";
 import { Providers } from "@/components/providers";
+import { profile, siteUrl } from "@/lib/profile";
 import "./globals.css";
 
 // Self-hosted General Sans (variable) — the geometric grotesk register, in the
@@ -20,59 +21,121 @@ const geistMono = Geist_Mono({
   display: "swap",
 });
 
-const base = "https://amirlan.dev";
-
 export const metadata: Metadata = {
-  metadataBase: new URL(base),
+  metadataBase: new URL(siteUrl),
+  applicationName: profile.name,
   title: {
-    default: "amirlan kalmukhan",
-    template: "%s | amirlan kalmukhan",
+    default: `${profile.name} | ${profile.title}`,
+    template: `%s | ${profile.name}`,
   },
-  description:
-    "amirlan kalmukhan — founding engineer at speko (yc s26), building voice-ai infrastructure.",
-  authors: [{ name: "amirlan kalmukhan", url: base }],
-  keywords: [
-    "amirlan kalmukhan",
-    "speko",
-    "yc s26",
-    "voice ai",
-    "founding engineer",
-    "kazakhstan",
-    "astana",
-  ],
+  description: profile.description,
+  authors: [{ name: profile.name, url: siteUrl }],
+  creator: profile.name,
+  publisher: profile.name,
+  category: "personal website",
+  keywords: [...profile.keywords],
+  alternates: {
+    canonical: "/",
+    types: {
+      "text/plain": [
+        { url: "/llm.txt", title: "LLM profile alias" },
+        { url: "/llms.txt", title: "LLM profile summary" },
+        { url: "/ai.txt", title: "AI agent profile data" },
+        { url: "/humans.txt", title: "Human-readable site credits" },
+      ],
+    },
+  },
+  robots: {
+    index: true,
+    follow: true,
+    nocache: false,
+    googleBot: {
+      index: true,
+      follow: true,
+      noimageindex: false,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
   openGraph: {
-    title: "amirlan kalmukhan",
-    description:
-      "founding engineer at speko (yc s26), building voice-ai infrastructure.",
-    url: base,
-    siteName: "amirlan kalmukhan",
+    title: `${profile.name} | ${profile.title}`,
+    description: profile.description,
+    url: siteUrl,
+    siteName: profile.name,
     locale: "en_US",
+    countryName: profile.location.country,
+    emails: [profile.email],
     type: "website",
   },
   twitter: {
     card: "summary",
-    title: "amirlan kalmukhan",
-    description:
-      "founding engineer at speko (yc s26), building voice-ai infrastructure.",
+    title: `${profile.name} | ${profile.title}`,
+    description: profile.description,
     creator: "@amirlankalm",
+  },
+  other: {
+    "profile:first_name": profile.givenName,
+    "profile:last_name": profile.familyName,
+    "profile:username": "amirlankalm",
+    "ai:summary": profile.description,
+    "ai:entities": [
+      profile.name,
+      profile.company.name,
+      profile.company.accelerator,
+      profile.location.city,
+      profile.location.country,
+    ].join(", "),
   },
 };
 
-const jsonLd = {
+const personJsonLd = {
   "@context": "https://schema.org",
   "@type": "Person",
-  name: "Amirlan Kalmukhan",
-  url: base,
-  sameAs: [
-    "https://x.com/amirlankalm",
-    "https://github.com/amirlankalm",
-    "https://www.linkedin.com/in/amirlan-kalmukhan-a02ab4366/",
-  ],
-  jobTitle: "Founding Engineer",
-  worksFor: { "@type": "Organization", name: "Speko" },
-  knowsAbout: ["voice ai", "retrieval", "provider routing", "llm infrastructure"],
+  "@id": `${siteUrl}/#person`,
+  name: profile.name,
+  givenName: profile.givenName,
+  familyName: profile.familyName,
+  alternateName: [...profile.aliases],
+  description: profile.description,
+  url: siteUrl,
+  email: profile.email,
+  sameAs: [...profile.sameAs],
+  jobTitle: profile.title,
+  worksFor: {
+    "@type": "Organization",
+    name: profile.company.name,
+    url: profile.company.url,
+  },
+  knowsAbout: [...profile.knowsAbout],
   nationality: "Kazakhstani",
-  address: { "@type": "PostalAddress", addressLocality: "Astana", addressCountry: "KZ" },
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: profile.location.city,
+    addressCountry: profile.location.countryCode,
+  },
+};
+
+const websiteJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "@id": `${siteUrl}/#website`,
+  name: profile.name,
+  url: siteUrl,
+  description: profile.description,
+  inLanguage: "en",
+  publisher: { "@id": `${siteUrl}/#person` },
+  about: { "@id": `${siteUrl}/#person` },
+};
+
+const profilePageJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "ProfilePage",
+  "@id": `${siteUrl}/#profile`,
+  url: siteUrl,
+  name: `${profile.name} profile`,
+  description: profile.description,
+  mainEntity: { "@id": `${siteUrl}/#person` },
 };
 
 export default function RootLayout({
@@ -91,7 +154,9 @@ export default function RootLayout({
         <Analytics />
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify([personJsonLd, websiteJsonLd, profilePageJsonLd]),
+          }}
         />
       </body>
     </html>

@@ -1,12 +1,14 @@
 /* TEAM */
-name: amirlan kalmukhan
-role: cto & co-founder, agent4 labs
-from: astana, kazakhstan
-contact: amirlan [at] extensy.dev
+name: Amirlan Kalmukhan
+role: Founding Engineer at Speko
+from: Astana, Kazakhstan
+contact: amirlan [at] speko.ai
 x: @amirlankalm
 github: amirlankalm
+linkedin: amirlan-kalmukhan-a02ab4366
 
 /* SITE */
-built with: next.js 16, tailwind v4, typescript
-deployed on: vercel
-last update: 2026
+url: https://amirlan.dev
+built with: Next.js 16, Tailwind v4, TypeScript
+deployed on: Vercel
+last update: 2026-07-06

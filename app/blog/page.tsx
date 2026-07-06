@@ -1,5 +1,14 @@
 import { Shell, delayStyle } from "@/components/site";
 
+export const metadata = {
+  title: "Blog",
+  description:
+    "Writing by Amirlan Kalmukhan on voice AI, retrieval, agentic systems, and engineering.",
+  alternates: {
+    canonical: "/blog",
+  },
+};
+
 export default function BlogPage() {
   return (
     <Shell>

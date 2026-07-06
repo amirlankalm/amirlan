@@ -1,0 +1,16 @@
+# Amirlan Kalmukhan
+
+Canonical LLM profile: https://amirlan.dev/llms.txt
+
+This file exists as a singular alias for agents and crawlers that request
+`/llm.txt` instead of `/llms.txt`.
+
+Amirlan Kalmukhan is a founding engineer at Speko (YC S26), building voice-AI
+infrastructure, low-latency agentic conversations, retrieval systems, and
+self-healing voice agents.
+
+Canonical website: https://amirlan.dev
+Contact: amirlan@speko.ai
+X: https://x.com/amirlankalm
+GitHub: https://github.com/amirlankalm
+LinkedIn: https://www.linkedin.com/in/amirlan-kalmukhan-a02ab4366/
