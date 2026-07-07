@@ -18,16 +18,12 @@ export function LabPage() {
             <TextLink href="https://speko.ai">speko</TextLink>
             {" "}
             (yc s26), where we build voice agents that test and heal themselves.
-            i&apos;m focused on latency, retrieval and making agentic
+            i&apos;m focused on latency, realtime retrieval and making
             conversations feel instant and natural.
           </p>
           <p>
             i&apos;m 15. i started coding and building things at 14. before that,
             i did research and robotics.
-          </p>
-          <p>
-            people usually find me as amirlan, amirlan kalmukhan, @amirlankalm,
-            or through work around voice ai, retrieval and agentic systems.
           </p>
         </div>
 
