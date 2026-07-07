@@ -1,6 +1,6 @@
 # Amirlan 
 
-A simple founder site built with Next.js App Router and Tailwind CSS v4.
+A founder site built with Next.js App Router and Tailwind CSS v4.
 
 ## Run
 
