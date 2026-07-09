@@ -32,7 +32,6 @@ export function LabPage() {
           style={delayStyle(320)}
           aria-label="primary pages"
         >
-          <TextLink href="/blog">blog</TextLink>
           <TextLink href="/socials">socials</TextLink>
         </nav>
 

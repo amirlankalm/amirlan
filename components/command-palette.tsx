@@ -91,7 +91,6 @@ export function CommandPalette() {
 
     return [
       { id: "home", label: "home", group: "go to", keywords: "index start", glyph: <Glyph d={ARROW} />, run: go("/") },
-      { id: "blog", label: "blog", group: "go to", keywords: "writing essays notes", glyph: <Glyph d={ARROW} />, run: go("/blog") },
       { id: "socials", label: "socials", group: "go to", keywords: "links contact reach", glyph: <Glyph d={ARROW} />, run: go("/socials") },
 
       {
