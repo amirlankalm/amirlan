@@ -27,17 +27,9 @@ export function LabPage() {
           </p>
         </div>
 
-        <nav
+        <div
           className="reveal mt-8 flex flex-wrap gap-x-3 gap-y-1 text-[18px] leading-relaxed"
           style={delayStyle(320)}
-          aria-label="primary pages"
-        >
-          <TextLink href="/socials">socials</TextLink>
-        </nav>
-
-        <div
-          className="reveal mt-6 flex flex-wrap gap-x-3 gap-y-1 text-[18px] leading-relaxed"
-          style={delayStyle(390)}
         >
           <TextLink href="https://x.com/amirlankalm">x.com</TextLink>
           <TextLink href="https://github.com/amirlankalm">github</TextLink>
