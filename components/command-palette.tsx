@@ -20,7 +20,7 @@ type Action = {
   run: () => void;
 };
 
-const EMAIL = "amirlan@speko.ai";
+const EMAIL = "amirlan@geko.sh";
 
 function Glyph({ d, stroke = true }: { d: string; stroke?: boolean }) {
   return (
@@ -235,11 +235,11 @@ export function CommandPalette() {
         type="button"
         aria-label="close command palette"
         tabIndex={-1}
-        className="cmd-backdrop frost absolute inset-0 cursor-default bg-[#0a4a2e]/18"
+        className="cmd-backdrop frost absolute inset-0 cursor-default bg-black/15"
         onClick={close}
       />
 
-      <div className="cmd-panel relative w-full max-w-[560px] overflow-hidden rounded-lg border border-[color:var(--color-line)] bg-[color:var(--color-bg)]/96 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.7),0_24px_70px_rgba(10,74,46,0.14)]">
+      <div className="cmd-panel relative w-full max-w-[560px] overflow-hidden rounded-lg border border-[color:var(--color-line)] bg-[color:var(--color-bg)]/96 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.06),0_24px_70px_rgba(0,0,0,0.6)]">
         <div className="flex items-center gap-3 border-b border-[color:var(--color-line)] px-4 text-[color:var(--color-muted)]">
           <Glyph d={DOT} />
           <input

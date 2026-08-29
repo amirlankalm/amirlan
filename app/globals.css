@@ -5,11 +5,11 @@
   --font-sans-lab: var(--font-general), "Avenir Next", "Helvetica Neue", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   --font-mono-lab: var(--font-geist-mono), "SFMono-Regular", "SF Mono", Consolas, "Liberation Mono", monospace;
 
-  --color-bg: #eef8f0;
-  --color-fg: #0b5132;
-  --color-muted: #438b66;
-  --color-line: #ccebd4;
-  --color-accent: #22d27a;
+  --color-bg: #100f0e;
+  --color-fg: #e8e4dd;
+  --color-muted: #8d887e;
+  --color-line: #2c2b29;
+  --color-accent: #1a1917;
 
   /* Motion language. Custom curves with real punch — the built-in CSS easings
      are too weak (Emil). One entrance, one snappy UI curve, one calm loop. */
@@ -19,17 +19,17 @@
 }
 
 :root {
-  color-scheme: light;
+  color-scheme: dark;
   background: var(--color-bg);
   color: var(--color-fg);
-  font-family: var(--font-serif-lab);
+  font-family: var(--font-sans-lab);
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-synthesis: none;
   font-optical-sizing: auto;
   scrollbar-width: thin;
-  scrollbar-color: #91d3a8 transparent;
+  scrollbar-color: #3a3835 transparent;
 }
 
 * {
@@ -53,9 +53,7 @@ body::before {
   inset: 0;
   z-index: -1;
   pointer-events: none;
-  background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.38), transparent 42%),
-    radial-gradient(80% 60% at 100% -10%, rgba(34, 210, 122, 0.08), transparent 60%);
+  background: none;
 }
 
 body::after {
@@ -64,9 +62,7 @@ body::after {
   inset: 0;
   z-index: -1;
   pointer-events: none;
-  opacity: 0.025;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-  background-size: 160px 160px;
+  display: none;
 }
 
 /* Typography niceties — balanced headings, orphan-free body, no faux weights.
@@ -87,8 +83,8 @@ a {
 }
 
 ::selection {
-  color: var(--color-fg);
-  background: var(--color-accent);
+  color: var(--color-bg);
+  background: var(--color-fg);
 }
 
 ::-webkit-scrollbar {
@@ -97,17 +93,17 @@ a {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #91d3a8;
+  background: #3a3835;
   border: 3px solid var(--color-bg);
   border-radius: 999px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #5ebf82;
+  background: #524f4a;
 }
 
 :focus-visible {
-  outline: 1px solid rgba(11, 81, 50, 0.42);
+  outline: 1px solid rgba(232, 228, 221, 0.5);
   outline-offset: 3px;
   border-radius: 2px;
 }
@@ -278,6 +274,118 @@ a {
 .link-draw:hover::after,
 .link-draw:focus-visible::after {
   opacity: 1;
+}
+
+/* ── Home ──────────────────────────────────────────────────────── */
+
+.note-page {
+  width: 100%;
+  max-width: 760px;
+  min-height: 100dvh;
+  margin-inline: auto;
+  padding: clamp(56px, 6vw, 96px) 24px 72px;
+  font-family: var(--font-geist), var(--font-sans-lab);
+  font-size: clamp(20px, 1.35vw, 23px);
+  font-weight: 380;
+  line-height: 1.58;
+  letter-spacing: -0.018em;
+  font-kerning: normal;
+  color: var(--color-fg);
+}
+
+.note-page h1,
+.note-page p {
+  margin: 0;
+}
+
+.note-page h1 {
+  margin-bottom: 32px;
+  font-family: var(--font-newsreader), ui-serif, Georgia, serif;
+  font-size: 1.2em;
+  font-weight: 480;
+  letter-spacing: -0.04em;
+  line-height: 1.05;
+}
+
+.note-page p + p {
+  margin-top: 32px;
+}
+
+.note-page a {
+  text-decoration: underline;
+  text-decoration-thickness: 1.5px;
+  text-decoration-color: color-mix(in srgb, currentColor 72%, transparent);
+  text-underline-offset: 3px;
+  transition: color 140ms ease, text-decoration-color 140ms ease;
+}
+
+.note-page a:hover,
+.note-page a:focus-visible {
+  color: var(--color-fg);
+  text-decoration-color: currentColor;
+}
+
+/* Company links — each carries its own hue. On a dark ground the resting tone
+   is the recessed one and hover *brightens*: light is the affordance here, the
+   inverse of the light theme these started in. */
+.note-page .company-link {
+  text-decoration: none;
+  transition: color 160ms ease;
+}
+
+.note-page .company-link--geko {
+  color: #22c55e;
+}
+
+.note-page .company-link--geko:hover,
+.note-page .company-link--geko:focus-visible {
+  color: #4ade80;
+}
+
+/* speko rests in a recessed grey and reveals its blue on touch — the colour is
+   the reward for interacting, not decoration. */
+.note-page .company-link--speko {
+  color: #a4a6b0;
+}
+
+.note-page .company-link--speko:hover,
+.note-page .company-link--speko:focus-visible {
+  color: #4d8dff;
+}
+
+.note-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 8px;
+  margin-top: 48px;
+  font-size: 0.94em;
+  letter-spacing: -0.014em;
+}
+
+.note-links a {
+  display: inline-block;
+  text-decoration-color: transparent;
+  transition:
+    transform 160ms ease,
+    color 140ms ease,
+    text-decoration-color 140ms ease;
+}
+
+.note-links a:hover,
+.note-links a:focus-visible {
+  text-decoration-color: currentColor;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .note-links a:hover {
+    transform: translateY(-2px);
+  }
+}
+
+@media (max-width: 560px) {
+  .note-page {
+    padding: 40px 20px 56px;
+  }
 }
 
 /* ── Command palette ──────────────────────────────────────────────

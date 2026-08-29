@@ -32,7 +32,7 @@ function Waveform({ active }: { active: boolean }) {
 
     const draw = (flat: boolean) => {
       ctx.clearRect(0, 0, cssW, cssH);
-      ctx.strokeStyle = "rgba(11, 81, 50, 0.5)";
+      ctx.strokeStyle = "rgba(232, 228, 221, 0.46)";
       ctx.lineWidth = 1.5;
       ctx.lineJoin = "round";
       ctx.lineCap = "round";
@@ -101,7 +101,7 @@ function FlatLine() {
         y1="8"
         x2="63"
         y2="8"
-        stroke="rgba(11, 81, 50, 0.5)"
+        stroke="rgba(232, 228, 221, 0.46)"
         strokeWidth="1.5"
         strokeLinecap="round"
       />

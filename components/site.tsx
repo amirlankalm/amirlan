@@ -124,7 +124,7 @@ export function Row({
   );
 
   const className =
-    "reveal group flex items-start justify-between gap-5 border-b border-[color:var(--color-line)] py-5 transition-[background-color,padding] duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] hover:px-2 hover:bg-white/22 sm:py-6";
+    "reveal group flex items-start justify-between gap-5 border-b border-[color:var(--color-line)] py-5 transition-[background-color,padding] duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] hover:px-2 hover:bg-white/[0.05] sm:py-6";
 
   if (href) {
     return (

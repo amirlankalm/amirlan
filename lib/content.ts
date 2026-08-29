@@ -10,20 +10,32 @@ export type Experience = {
 
 export const experiences: Experience[] = [
   {
+    org: "geko",
+    href: "https://geko.sh",
+    role: "co-founder",
+    period: "now",
+  },
+  {
     org: "speko",
     orgDetail: "yc s26",
     href: "https://speko.ai",
     role: "founding engineer",
-    period: "2026",
+    period: "previously",
   },
 ];
 
 export const projects = [
   {
+    name: "geko",
+    href: "https://geko.sh",
+    year: "now",
+    detail: "voice training data + rl envs",
+  },
+  {
     name: "speko",
     href: "https://speko.ai",
-    year: "now",
-    detail: "voice-ai infra",
+    year: "previously",
+    detail: "self-healing voice agents",
   },
 ];
 

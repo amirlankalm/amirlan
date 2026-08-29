@@ -75,12 +75,11 @@ function SoundRuntime({
     function init() {
       if (primed.current) return;
       primed.current = true;
-      // A real (near-silent) play — NOT volume:0, which the lib optimizes away
-      // without ever creating/resuming its context. The "hover" tone is
-      // sub-audible, but the play forces the React engine's AudioContext to be
-      // created and resumed *inside* this gesture, so every later sound works.
+      // A real, near-silent play — NOT volume:0, which the library optimizes
+      // away without ever creating/resuming its context. This first gesture
+      // unlocks later hover feedback without making the initial page click noisy.
       try {
-        patch.play("hover");
+        patch.play("hover", { volume: 0.01 });
       } catch {
         // ignore — context may not be ready on the very first frame
       }

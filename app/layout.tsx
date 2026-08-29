@@ -1,5 +1,5 @@
-import type { Metadata } from "next";
-import { Geist_Mono } from "next/font/google";
+import type { Metadata, Viewport } from "next";
+import { Geist, Geist_Mono, Newsreader } from "next/font/google";
 import localFont from "next/font/local";
 import { Analytics } from "@vercel/analytics/next";
 import { Providers } from "@/components/providers";
@@ -15,11 +15,29 @@ const generalSans = localFont({
   display: "swap",
 });
 
+const geist = Geist({
+  subsets: ["latin"],
+  variable: "--font-geist",
+  display: "swap",
+});
+
+const newsreader = Newsreader({
+  subsets: ["latin"],
+  variable: "--font-newsreader",
+  display: "swap",
+});
+
 const geistMono = Geist_Mono({
   subsets: ["latin"],
   variable: "--font-geist-mono",
   display: "swap",
 });
+
+// Matches --color-bg so mobile browser chrome doesn't frame the page in white.
+export const viewport: Viewport = {
+  colorScheme: "dark",
+  themeColor: "#100f0e",
+};
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -147,7 +165,7 @@ export default function RootLayout({
     <html
       lang="en"
       data-scroll-behavior="smooth"
-      className={`${generalSans.variable} ${geistMono.variable}`}
+      className={`${geist.variable} ${newsreader.variable} ${generalSans.variable} ${geistMono.variable}`}
     >
       <body>
         <Providers>{children}</Providers>

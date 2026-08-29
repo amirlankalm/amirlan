@@ -7,29 +7,35 @@ aliases:
   - amirlan kalmukhan
   - amirlankalm
   - amirlannk
-role: Founding Engineer at Speko
+role: Co-founder at Geko
 organization:
-  name: Speko
+  name: Geko
+  url: https://geko.sh
+  focus: Training data and reinforcement-learning environments for human-like voice
+previous_experience:
+  role: Founding Engineer
+  organization: Speko
   url: https://speko.ai
   accelerator: Y Combinator S26
 location:
   city: Astana
   country: Kazakhstan
-email: amirlan@speko.ai
+email: amirlan@geko.sh
 summary: >
-  Amirlan Kalmukhan is a founding engineer at Speko (YC S26), building
-  voice-AI infrastructure, low-latency agentic conversations, retrieval
-  systems, and self-healing voice agents.
+  Amirlan Kalmukhan is a 15-year-old co-founder at Geko, building
+  expert-authored training data and real-time audio reinforcement-learning
+  environments for human-like speech models.
 topics:
   - voice AI
-  - voice agents
-  - retrieval systems
-  - LLM infrastructure
-  - latency optimization
-  - agentic systems
-  - self-healing agents
+  - speech training data
+  - reinforcement-learning environments
+  - real-time audio reinforcement learning
+  - human-like speech
+  - linguistics
+  - phonetics
 links:
   website: https://amirlan.dev
+  geko: https://geko.sh
   speko: https://speko.ai
   x: https://x.com/amirlankalm
   github: https://github.com/amirlankalm

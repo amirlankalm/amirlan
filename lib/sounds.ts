@@ -1,11 +1,7 @@
-import type { SoundPatch } from "@web-kits/audio";
+import type { SoundDefinition, SoundPatch } from "@web-kits/audio";
 
 /**
- * Soft, relaxing interface taps inspired by arlan.me's muted interaction audio.
- *
- * The feel is closer to a felt key press than a click: low triangle tones,
- * gentle attack, short decay, lowpass filtering, and a tiny damped room tail.
- * Nothing is bright, percussive, or musical enough to distract from reading.
+ * Soft, warm interaction tones designed for a quiet text-first site.
  */
 const LP = 340;
 
@@ -30,11 +26,34 @@ function softTone(frequency: number, decay: number, gain: number) {
   };
 }
 
+// A tiny C-major dyad: felt-like rather than clicky, short enough that it
+// doesn't compete with reading, and deliberately free of the retro preset's
+// sharp square-wave edge.
+const calmHover = {
+  layers: [
+    {
+      source: { type: "sine" as const, frequency: 392 },
+      filter: { type: "lowpass" as const, frequency: 920, resonance: 0.4 },
+      envelope: { attack: 0.012, decay: 0.075, sustain: 0, release: 0.04 },
+      effects: SOFT_TAIL,
+      gain: 0.036,
+    },
+    {
+      source: { type: "sine" as const, frequency: 523.25 },
+      filter: { type: "lowpass" as const, frequency: 1150, resonance: 0.35 },
+      envelope: { attack: 0.014, decay: 0.06, sustain: 0, release: 0.035 },
+      delay: 0.018,
+      effects: SOFT_TAIL,
+      gain: 0.021,
+    },
+  ],
+} satisfies SoundDefinition;
+
 export const UI_PATCH = {
   name: "amirlan-ui",
-  description: "soft low tactile vibrations, in the spirit of arlan.me",
+  description: "soft, warm tactile interaction tones",
   sounds: {
-    hover: softTone(196, 0.07, 0.052),
+    hover: calmHover,
     nav: softTone(174, 0.095, 0.07),
     select: softTone(164, 0.1, 0.074),
     link: softTone(156, 0.095, 0.066),
