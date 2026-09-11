@@ -187,16 +187,6 @@ a {
   background-size: 100% 1px;
 }
 
-/* Rows are clickable edge to edge, so the underline has to answer from edge to
-   edge too — hovering dead space in a row that responds to clicks reads as
-   broken. Lives here rather than as a Tailwind group-hover: utility because
-   .link-grow above is unlayered, and unlayered CSS outranks @layer utilities
-   regardless of specificity, so the utility would silently never apply. */
-.link-row:hover .link-grow,
-.link-row:focus-visible .link-grow {
-  background-size: 100% 1px;
-}
-
 /* Inline prose links: always faintly underlined, brighten + thicken on hover. */
 .link-inline {
   color: var(--color-fg);

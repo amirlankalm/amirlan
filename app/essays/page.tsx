@@ -38,9 +38,12 @@ export default function EssaysPage() {
             href={essay.file}
             external
             style={staggerDelay(i, 140)}
-            className="reveal link-row block border-b border-[color:var(--color-line)] py-4 text-[20px] leading-relaxed [text-wrap:balance] sm:py-5"
+            className="reveal group block border-b border-[color:var(--color-line)] py-4 text-[20px] leading-relaxed [text-wrap:balance] sm:py-5"
           >
-            <span className="link-grow text-[color:var(--color-fg)]">
+            {/* A real underline rather than the site's growing one: sweeping a
+                background across a title this wide repaints the full line every
+                frame. Only the decoration colour moves now. */}
+            <span className="text-[color:var(--color-fg)] underline decoration-[color:var(--color-muted)] underline-offset-[4px] transition-[text-decoration-color] duration-200 ease-out [text-decoration-thickness:1.5px] group-hover:decoration-[color:var(--color-fg)]">
               {essay.title}
             </span>
             <span className="sr-only"> (pdf, opens in new tab)</span>
