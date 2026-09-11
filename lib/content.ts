@@ -50,6 +50,15 @@ export type Essay = {
 export const essays: Essay[] = [
   {
     title:
+      "probability behind jujutsu kaisen: kinji hakari's idle death gamble",
+    file: "/essays/idle-death-gamble.pdf",
+  },
+  {
+    title: "topology behind jujutsu kaisen: ryomen sukuna's cuts",
+    file: "/essays/sukunas-cuts.pdf",
+  },
+  {
+    title:
       "vector fields behind jujutsu kaisen: gojo satoru's blue, red and purple",
     file: "/essays/blue-red-purple.pdf",
   },
