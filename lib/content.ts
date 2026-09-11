@@ -46,7 +46,13 @@ export type Essay = {
   file: string;
 };
 
+// Newest first.
 export const essays: Essay[] = [
+  {
+    title:
+      "vector fields behind jujutsu kaisen: gojo satoru's blue, red and purple",
+    file: "/essays/blue-red-purple.pdf",
+  },
   {
     title:
       "information theory behind jujutsu kaisen: gojo satoru's unlimited void",

@@ -29,7 +29,10 @@ export default function EssaysPage() {
         </h1>
       </section>
 
-      <div className="border-t border-[color:var(--color-line)]">
+      {/* No rules, no underlines — separation is space alone. The gap has to
+          stay clear of the ~32px line-height, or two titles that wrap read as
+          one block. */}
+      <div className="flex flex-col gap-8">
         {essays.map((essay, i) => (
           // `external` forces a plain anchor: these point at static PDFs, and
           // Next's client router would otherwise try to route to the file path.
@@ -38,12 +41,12 @@ export default function EssaysPage() {
             href={essay.file}
             external
             style={staggerDelay(i, 140)}
-            className="reveal group block border-b border-[color:var(--color-line)] py-4 text-[20px] leading-relaxed [text-wrap:balance] sm:py-5"
+            className="reveal group block py-1 text-[20px] leading-relaxed [text-wrap:balance]"
           >
-            {/* A real underline rather than the site's growing one: sweeping a
-                background across a title this wide repaints the full line every
-                frame. Only the decoration colour moves now. */}
-            <span className="text-[color:var(--color-fg)] underline decoration-[color:var(--color-muted)] underline-offset-[4px] transition-[text-decoration-color] duration-200 ease-out [text-decoration-thickness:1.5px] group-hover:decoration-[color:var(--color-fg)]">
+            {/* Colour lives on the span, not the anchor: globals.css sets an
+                unlayered `a { color: inherit }`, and unlayered CSS outranks
+                @layer utilities, so a hover:text-* on the <a> silently loses. */}
+            <span className="text-[color:var(--color-fg)] transition-colors duration-200 ease-out group-hover:text-[color:var(--color-muted)]">
               {essay.title}
             </span>
             <span className="sr-only"> (pdf, opens in new tab)</span>
