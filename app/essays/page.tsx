@@ -1,12 +1,19 @@
+import type { Metadata } from "next";
 import { essays } from "@/lib/content";
 import { SoundLink } from "@/components/interactive";
 import { Shell, delayStyle, staggerDelay } from "@/components/site";
 
-export const metadata = {
+// opengraph-image.png / twitter-image.png in this folder supply the share card
+// (Next picks them up by filename). The root layout sets a small "summary"
+// card, so widen it here or the banner renders as a thumbnail.
+export const metadata: Metadata = {
   title: "Essays",
   description: "Essays by Amirlan Kalmukhan, published as PDFs.",
   alternates: {
     canonical: "/essays",
+  },
+  twitter: {
+    card: "summary_large_image",
   },
 };
 
