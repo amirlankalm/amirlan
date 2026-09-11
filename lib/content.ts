@@ -39,6 +39,21 @@ export const projects = [
   },
 ];
 
+export type Essay = {
+  /** The only thing /essays shows. */
+  title: string;
+  /** Lives in public/, so the browser renders it inline rather than downloading. */
+  file: string;
+};
+
+export const essays: Essay[] = [
+  {
+    title:
+      "information theory behind jujutsu kaisen: gojo satoru's unlimited void",
+    file: "/essays/infinite-void.pdf",
+  },
+];
+
 export const socials = [
   {
     label: "email",

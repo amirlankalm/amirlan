@@ -31,7 +31,9 @@ export function LabPage() {
           (yc s26).
         </p>
 
-        <nav className="note-links" aria-label="Contact links">
+        <nav className="note-links" aria-label="Links">
+          <SoundLink href="/essays">essays</SoundLink>
+          <span aria-hidden="true">|</span>
           <SoundLink href="https://x.com/amirlankalm" external>
             x.com
           </SoundLink>

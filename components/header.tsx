@@ -7,6 +7,7 @@ import { useUISound } from "@/components/sound-provider";
 import { useHoverTick } from "@/components/interactive";
 
 const nav = [
+  { href: "/essays", label: "essays" },
   { href: "/blog", label: "blog" },
   { href: "/socials", label: "socials" },
 ];

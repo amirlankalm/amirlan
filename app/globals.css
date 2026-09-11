@@ -171,6 +171,11 @@ a {
   background-size: 0% 1px;
   background-position: 0 100%;
   background-repeat: no-repeat;
+  /* Titles that wrap need each line to carry its own underline. The default
+     (slice) lays one background across the unbroken box, so a wrapped link
+     underlines wrong. No-op for the single-line nav and socials links. */
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
   transition:
     background-size 0.4s var(--ease-out-quint),
     color 0.25s ease;
@@ -179,6 +184,16 @@ a {
 .link-grow:hover,
 .link-grow:focus-visible,
 .link-grow[aria-current="page"] {
+  background-size: 100% 1px;
+}
+
+/* Rows are clickable edge to edge, so the underline has to answer from edge to
+   edge too — hovering dead space in a row that responds to clicks reads as
+   broken. Lives here rather than as a Tailwind group-hover: utility because
+   .link-grow above is unlayered, and unlayered CSS outranks @layer utilities
+   regardless of specificity, so the utility would silently never apply. */
+.link-row:hover .link-grow,
+.link-row:focus-visible .link-grow {
   background-size: 100% 1px;
 }
 
