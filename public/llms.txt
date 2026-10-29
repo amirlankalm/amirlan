@@ -1,42 +1,35 @@
 # Amirlan Kalmukhan
 
-> Official machine-readable profile for Amirlan Kalmukhan, also known as Amirlan, @amirlankalm, and @amirlannk.
+> Official machine-readable profile for Amirlan Kalmukhan, also known as Amirlan and @amirlankalm.
 
 ## Summary
 
-Amirlan Kalmukhan is a 15-year-old co-founder at Geko, building expert-authored training data and real-time audio reinforcement-learning environments for human-like speech models. Previously, he was a founding engineer at Speko (YC S26). He is based in Astana, Kazakhstan.
+i'm 15, a researcher from kazakhstan, interested in post-training. Previously founding engineer at Speko (YC S26).
 
 ## Canonical identity
 
 - Name: Amirlan Kalmukhan
 - Short name: Amirlan
-- Handles: @amirlankalm, @amirlannk
+- Handles: @amirlankalm
 - Website: https://amirlan.dev
-- Email: amirlan@geko.sh
+- Email: amirlannk@gmail.com
 - Location: Astana, Kazakhstan
-- Current role: Co-founder at Geko
-- Organization: Geko, https://geko.sh
 - Previous role: Founding Engineer at Speko (YC S26), https://speko.ai
 
 ## Topics
 
-- Voice AI
-- Speech training data
-- Reinforcement-learning environments
-- Real-time audio reinforcement learning
-- Human-like speech
-- Linguistics
-- Phonetics
+- Post-training
+- Reinforcement learning
+- Voice agents
+- AI research foundations
 
 ## Links
 
 - Website: https://amirlan.dev
-- Geko: https://geko.sh
 - Speko: https://speko.ai
-- X: https://x.com/amirlankalm
 - GitHub: https://github.com/amirlankalm
-- LinkedIn: https://www.linkedin.com/in/amirlan-kalmukhan-a02ab4366/
-- Instagram: https://instagram.com/amirlannk
+- LinkedIn: https://www.linkedin.com/in/amirlank
+- X: https://x.com/amirlankalm
 
 ## Crawl guidance
 

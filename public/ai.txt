@@ -6,12 +6,6 @@ aliases:
   - amirlan
   - amirlan kalmukhan
   - amirlankalm
-  - amirlannk
-role: Co-founder at Geko
-organization:
-  name: Geko
-  url: https://geko.sh
-  focus: Training data and reinforcement-learning environments for human-like voice
 previous_experience:
   role: Founding Engineer
   organization: Speko
@@ -20,24 +14,16 @@ previous_experience:
 location:
   city: Astana
   country: Kazakhstan
-email: amirlan@geko.sh
+email: amirlannk@gmail.com
 summary: >
-  Amirlan Kalmukhan is a 15-year-old co-founder at Geko, building
-  expert-authored training data and real-time audio reinforcement-learning
-  environments for human-like speech models.
+  i'm 15, a researcher from kazakhstan, interested in post-training.
 topics:
-  - voice AI
-  - speech training data
-  - reinforcement-learning environments
-  - real-time audio reinforcement learning
-  - human-like speech
-  - linguistics
-  - phonetics
+  - post-training
+  - reinforcement learning
+  - voice agents
 links:
   website: https://amirlan.dev
-  geko: https://geko.sh
   speko: https://speko.ai
-  x: https://x.com/amirlankalm
   github: https://github.com/amirlankalm
-  linkedin: https://www.linkedin.com/in/amirlan-kalmukhan-a02ab4366/
-  instagram: https://instagram.com/amirlannk
+  linkedin: https://www.linkedin.com/in/amirlank
+  x: https://x.com/amirlankalm

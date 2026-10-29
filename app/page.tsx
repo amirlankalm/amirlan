@@ -1,5 +1,5 @@
-import { LabPage } from "@/components/lab-page";
+import { redirect } from "next/navigation";
 
-export default function Home() {
-  return <LabPage />;
+export default function RootPage() {
+  redirect("/about");
 }

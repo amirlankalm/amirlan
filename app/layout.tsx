@@ -6,8 +6,6 @@ import { Providers } from "@/components/providers";
 import { profile, siteUrl } from "@/lib/profile";
 import "./globals.css";
 
-// Self-hosted General Sans (variable) — the geometric grotesk register, in the
-// spirit of the Neue Montreal used across the reference sites.
 const generalSans = localFont({
   src: "./fonts/GeneralSans-Variable.woff2",
   variable: "--font-general",
@@ -33,19 +31,15 @@ const geistMono = Geist_Mono({
   display: "swap",
 });
 
-// Matches --color-bg so mobile browser chrome doesn't frame the page in white.
 export const viewport: Viewport = {
-  colorScheme: "dark",
-  themeColor: "#100f0e",
+  colorScheme: "light",
+  themeColor: "#fbfaf6",
 };
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   applicationName: profile.name,
-  title: {
-    default: `${profile.name} | ${profile.title}`,
-    template: `%s | ${profile.name}`,
-  },
+  title: "Amirlan Kalmukhan",
   description: profile.description,
   authors: [{ name: profile.name, url: siteUrl }],
   creator: profile.name,
@@ -77,7 +71,7 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: `${profile.name} | ${profile.title}`,
+    title: "Amirlan Kalmukhan",
     description: profile.description,
     url: siteUrl,
     siteName: profile.name,
@@ -88,7 +82,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary",
-    title: `${profile.name} | ${profile.title}`,
+    title: "Amirlan Kalmukhan",
     description: profile.description,
     creator: "@amirlankalm",
   },
@@ -100,7 +94,6 @@ export const metadata: Metadata = {
     "ai:entities": [
       profile.name,
       profile.company.name,
-      profile.company.accelerator,
       profile.location.city,
       profile.location.country,
     ].join(", "),
@@ -120,11 +113,6 @@ const personJsonLd = {
   email: profile.email,
   sameAs: [...profile.sameAs],
   jobTitle: profile.title,
-  worksFor: {
-    "@type": "Organization",
-    name: profile.company.name,
-    url: profile.company.url,
-  },
   knowsAbout: [...profile.knowsAbout],
   nationality: "Kazakhstani",
   address: {
@@ -167,6 +155,15 @@ export default function RootLayout({
       data-scroll-behavior="smooth"
       className={`${geist.variable} ${newsreader.variable} ${generalSans.variable} ${geistMono.variable}`}
     >
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link
+          rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;600;700&family=STIX+Two+Text:ital,wght@0,400..700;1,400..700&display=swap"
+        />
+        <script src="/glyph-dragon.js" defer></script>
+      </head>
       <body>
         <Providers>{children}</Providers>
         <Analytics />

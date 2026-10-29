@@ -11,6 +11,7 @@ build/
 *.tsbuildinfo
 .DS_Store
 .playwright-mcp/
+.web-kits/
 amirlan-lab-*.png
 .vercel
 .env*

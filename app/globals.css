@@ -1,35 +1,33 @@
 @import "tailwindcss";
 
 @theme {
-  --font-serif-lab: Georgia, "Times New Roman", Times, serif;
-  --font-sans-lab: var(--font-general), "Avenir Next", "Helvetica Neue", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  --font-mono-lab: var(--font-geist-mono), "SFMono-Regular", "SF Mono", Consolas, "Liberation Mono", monospace;
+  --font-serif-lab: "STIX Two Text", "Noto Serif JP", var(--font-newsreader), Georgia, serif;
+  --font-sans-lab: "Zalando Sans", var(--font-general), -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+  --font-mono-lab: var(--font-geist-mono), "SFMono-Regular", "SF Mono", Consolas, monospace;
 
-  --color-bg: #100f0e;
-  --color-fg: #e8e4dd;
-  --color-muted: #8d887e;
-  --color-line: #2c2b29;
-  --color-accent: #1a1917;
+  --color-bg: #fbfaf6;
+  --color-fg: #1a1a1a;
+  --color-muted: #6b6a66;
+  --color-line: #e8e7e1;
+  --color-accent: #2f7d6a;
 
-  /* Motion language. Custom curves with real punch — the built-in CSS easings
-     are too weak (Emil). One entrance, one snappy UI curve, one calm loop. */
   --ease-out-quint: cubic-bezier(0.16, 1, 0.3, 1);
   --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
   --ease-soft: cubic-bezier(0.4, 0, 0.6, 1);
 }
 
 :root {
-  color-scheme: dark;
-  background: var(--color-bg);
-  color: var(--color-fg);
-  font-family: var(--font-sans-lab);
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  font-synthesis: none;
-  font-optical-sizing: auto;
-  scrollbar-width: thin;
-  scrollbar-color: #3a3835 transparent;
+  --bg: #fbfaf6;
+  --fg: #1a1a1a;
+  --muted: #6b6a66;
+  --border: #e8e7e1;
+  --jade: #2f7d6a;
+  --gold: #b98a1d;
+  --red: #c0392b;
+  --maxw: 640px;
+  --serif: "STIX Two Text", "Noto Serif JP", var(--font-newsreader), Georgia, serif;
+  --sans: "Zalando Sans", var(--font-general), -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+  color-scheme: light;
 }
 
 * {
@@ -37,100 +35,303 @@
 }
 
 html {
+  -webkit-text-size-adjust: 100%;
   scroll-behavior: smooth;
+  background-color: var(--bg);
 }
 
 body {
+  background-color: var(--bg);
+  color: var(--fg);
+  font-family: var(--sans);
+  font-size: 16px;
+  line-height: 1.7;
+  letter-spacing: -0.011em;
+  margin: 0;
+  padding: 0 20px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
   position: relative;
   min-height: 100dvh;
-  margin: 0;
-  background: var(--color-bg);
 }
 
-body::before {
-  content: "";
+/* Dragon canvas: full screen fixed background at z-index 0 */
+.dragon-canvas {
   position: fixed;
   inset: 0;
-  z-index: -1;
+  width: 100vw;
+  height: 100vh;
+  z-index: 0;
   pointer-events: none;
-  background: none;
+  display: block;
 }
 
-body::after {
-  content: "";
+/* Dragon veil: frosted column behind text so the dragon swims around words */
+.dragon-veil {
   position: fixed;
   inset: 0;
-  z-index: -1;
   pointer-events: none;
-  display: none;
+  z-index: 1;
+  background: linear-gradient(
+    to right,
+    rgba(251, 250, 246, 0) calc(50% - 520px),
+    rgba(251, 250, 246, 0.92) calc(50% - 340px),
+    rgba(251, 250, 246, 0.92) calc(50% + 340px),
+    rgba(251, 250, 246, 0) calc(50% + 520px)
+  );
 }
 
-/* Typography niceties — balanced headings, orphan-free body, no faux weights.
-   Each is invisible alone; together they make type read as set, not rendered. */
-h1,
-h2,
-h3 {
-  text-wrap: balance;
+@media (max-width: 720px) {
+  .dragon-veil {
+    background: rgba(251, 250, 246, 0.82);
+  }
 }
 
-p {
-  text-wrap: pretty;
+.wrap {
+  position: relative;
+  z-index: 2;
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 64px 0 96px;
 }
 
 a {
   color: inherit;
-  text-decoration: none;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  text-decoration-thickness: 0.5px;
+  text-decoration-color: var(--muted);
+  transition: color 0.15s ease, text-decoration-color 0.15s ease;
 }
+
+a:hover {
+  color: var(--jade);
+  text-decoration-color: var(--jade);
+}
+
+header {
+  padding-top: 20px;
+  margin-bottom: 24px;
+}
+
+h1,
+h2,
+h3 {
+  text-wrap: balance;
+  line-height: 1.3;
+}
+
+h1 {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: 2.6rem;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  margin: 0;
+}
+
+nav {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 22px;
+  margin-bottom: 32px;
+  padding-bottom: 4px;
+  font-family: var(--serif);
+  font-size: 1.15rem;
+}
+
+.nav-tab {
+  background: none;
+  border: none;
+  padding: 0;
+  font: inherit;
+  color: var(--muted);
+  text-decoration: none;
+  transition: color 0.15s ease;
+  cursor: pointer;
+}
+
+.nav-tab.active {
+  color: var(--fg);
+  font-weight: 500;
+}
+
+.nav-tab:hover {
+  color: var(--fg);
+}
+
+.label {
+  font-family: var(--serif);
+  font-size: 1.05rem;
+  color: var(--muted);
+  margin: 28px 0 10px;
+  font-weight: 400;
+}
+
+p {
+  margin: 0 0 16px;
+  text-wrap: pretty;
+}
+
+.muted {
+  color: var(--muted);
+}
+
+.timeline {
+  margin: 12px 0 28px 2px;
+  padding: 4px 0 4px 18px;
+  list-style: none;
+  border-left: 2px solid rgba(0, 0, 0, 0.12);
+}
+
+.timeline li {
+  padding: 6px 0;
+  line-height: 1.6;
+}
+
+.timeline .sub {
+  display: block;
+  color: var(--muted);
+  font-size: 0.95rem;
+  line-height: 1.5;
+  margin-top: 3px;
+}
+
+.inline-icon {
+  height: 1.05em;
+  width: 1.05em;
+  vertical-align: -0.16em;
+  margin-right: 0.35em;
+  display: inline-block;
+  object-fit: contain;
+  border-radius: 3px;
+}
+
+.project {
+  padding: 14px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.project:first-child {
+  padding-top: 0;
+}
+
+.project:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.project a {
+  font-weight: 400;
+  font-size: 16px;
+  color: var(--fg);
+  text-decoration: underline;
+  text-underline-offset: 2.5px;
+  text-decoration-thickness: 0.5px;
+  text-decoration-color: var(--muted);
+}
+
+.project a:hover {
+  color: var(--jade);
+  text-decoration-color: var(--jade);
+}
+
+.project .desc {
+  color: var(--muted);
+  margin: 3px 0 0;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.essay-item {
+  padding: 14px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.essay-item:first-child {
+  padding-top: 0;
+}
+
+.essay-item:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.essay-item a {
+  font-weight: 400;
+  font-size: 16px;
+  color: var(--fg);
+  text-decoration: underline;
+  text-underline-offset: 2.5px;
+  text-decoration-thickness: 0.5px;
+  text-decoration-color: var(--muted);
+}
+
+.essay-item a:hover {
+  color: var(--jade);
+  text-decoration-color: var(--jade);
+}
+
+.footer {
+  margin-top: 56px;
+  padding-top: 0;
+}
+
+.socials {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 18px;
+  font-size: 0.98rem;
+}
+
+.socials a {
+  color: var(--fg);
+  text-decoration: underline;
+  text-underline-offset: 2.5px;
+  text-decoration-thickness: 0.5px;
+  text-decoration-color: var(--muted);
+}
+
+.socials a:hover {
+  color: var(--jade);
+  text-decoration-color: var(--jade);
+}
+
+.footer-email {
+  margin-top: 14px;
+  font-size: 0.98rem;
+  color: var(--fg);
+}
+
+.footer-email a {
+  color: var(--fg);
+  text-decoration: underline;
+  text-underline-offset: 2.5px;
+  text-decoration-thickness: 0.5px;
+  text-decoration-color: var(--muted);
+}
+
+.footer-email a:hover {
+  color: var(--jade);
+  text-decoration-color: var(--jade);
+}
+
+
 
 ::selection {
-  color: var(--color-bg);
-  background: var(--color-fg);
+  background: #e8e4dc;
+  color: #1a1a1a;
 }
 
-::-webkit-scrollbar {
-  width: 11px;
-  height: 11px;
+/* Utility animations and classes for subpages like /essays */
+.reveal {
+  opacity: 0;
+  animation: enter 500ms var(--ease-out, ease-out) forwards;
+  animation-delay: var(--reveal-delay, 0ms);
 }
-
-::-webkit-scrollbar-thumb {
-  background: #3a3835;
-  border: 3px solid var(--color-bg);
-  border-radius: 999px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: #524f4a;
-}
-
-:focus-visible {
-  outline: 1px solid rgba(232, 228, 221, 0.5);
-  outline-offset: 3px;
-  border-radius: 2px;
-}
-
-.font-mono {
-  font-family: var(--font-mono-lab);
-}
-
-.font-sans {
-  font-family: var(--font-sans-lab);
-}
-
-.one-page-copy {
-  letter-spacing: -0.005em;
-}
-
-/* Frosted backdrop with the -webkit- prefix Tailwind v4 omits — needed for
-   Safari / iOS, the most likely browsers to open this site. */
-.frost {
-  -webkit-backdrop-filter: blur(12px);
-  backdrop-filter: blur(12px);
-}
-
-/* ── Motion language ──────────────────────────────────────────────
-   One easing curve, one entrance. Everything below the fold animates
-   on mount with a small stagger — so each route change reads as a
-   composed reveal rather than a hard cut. */
 
 @keyframes enter {
   from {
@@ -143,342 +344,18 @@ a {
   }
 }
 
-@keyframes enter-soft {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-.reveal {
-  opacity: 0;
-  animation: enter 0.6s var(--ease-out-quint) forwards;
-  animation-delay: var(--reveal-delay, 0ms);
-}
-
-.reveal-soft {
-  opacity: 0;
-  animation: enter-soft 0.8s ease forwards;
-  animation-delay: var(--reveal-delay, 0ms);
-}
-
-/* Underline that grows from the left on hover — the quiet signature
-   of the whole site. Applied to nav, lists, and inline links. */
 .link-grow {
-  background-image: linear-gradient(currentColor, currentColor);
-  background-size: 0% 1px;
-  background-position: 0 100%;
-  background-repeat: no-repeat;
-  /* Titles that wrap need each line to carry its own underline. The default
-     (slice) lays one background across the unbroken box, so a wrapped link
-     underlines wrong. No-op for the single-line nav and socials links. */
-  -webkit-box-decoration-break: clone;
-  box-decoration-break: clone;
-  transition:
-    background-size 0.4s var(--ease-out-quint),
-    color 0.25s ease;
-}
-
-.link-grow:hover,
-.link-grow:focus-visible,
-.link-grow[aria-current="page"] {
-  background-size: 100% 1px;
-}
-
-/* Inline prose links: always faintly underlined, brighten + thicken on hover. */
-.link-inline {
-  color: var(--color-fg);
-  background-image: linear-gradient(currentColor, currentColor);
-  background-size: 100% 1px;
-  background-position: 0 100%;
-  background-repeat: no-repeat;
-  opacity: 0.92;
-  transition:
-    opacity 0.25s ease,
-    background-size 0.35s var(--ease-out-quint);
-  padding-bottom: 1px;
-}
-
-.link-inline:hover,
-.link-inline:focus-visible {
-  opacity: 1;
-  background-size: 100% 1.5px;
-}
-
-/* Pressable feedback — instant, subtle scale on press so any control feels
-   like it heard the click. Buttons must feel responsive. */
-.press {
-  transition: transform 160ms var(--ease-out);
-}
-
-.press:active {
-  transform: scale(0.97);
-}
-
-/* A 2px underline that draws from the left on load — the hero's quiet flourish.
-   Scales on the X axis only (transform = GPU, no layout). */
-.draw {
-  position: relative;
-  white-space: nowrap;
-}
-
-.draw::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: -0.04em;
-  height: 2px;
-  background: currentColor;
-  opacity: 0.62;
-  transform: scaleX(0);
-  transform-origin: left center;
-  animation: draw 0.7s var(--ease-out-quint) forwards;
-  animation-delay: var(--draw-delay, 720ms);
-}
-
-@keyframes draw {
-  to {
-    transform: scaleX(1);
-  }
-}
-
-/* An inline prose link whose underline draws itself on load — the hero's
-   flourish, reused for a single focal link in the story. No static underline;
-   the line arrives, then brightens on hover. */
-.link-draw {
-  position: relative;
-  color: var(--color-fg);
-  white-space: nowrap;
-  opacity: 0.94;
-  transition: opacity 0.25s ease;
-}
-
-.link-draw:hover,
-.link-draw:focus-visible {
-  opacity: 1;
-}
-
-.link-draw::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: -0.05em;
-  height: 1.5px;
-  background: currentColor;
-  opacity: 0.8;
-  transform: scaleX(0);
-  transform-origin: left center;
-  animation: draw 0.7s var(--ease-out-quint) forwards;
-  animation-delay: var(--draw-delay, 1000ms);
-}
-
-.link-draw:hover::after,
-.link-draw:focus-visible::after {
-  opacity: 1;
-}
-
-/* ── Home ──────────────────────────────────────────────────────── */
-
-.note-page {
-  width: 100%;
-  max-width: 760px;
-  min-height: 100dvh;
-  margin-inline: auto;
-  padding: clamp(56px, 6vw, 96px) 24px 72px;
-  font-family: var(--font-geist), var(--font-sans-lab);
-  font-size: clamp(20px, 1.35vw, 23px);
-  font-weight: 380;
-  line-height: 1.58;
-  letter-spacing: -0.018em;
-  font-kerning: normal;
-  color: var(--color-fg);
-}
-
-.note-page h1,
-.note-page p {
-  margin: 0;
-}
-
-.note-page h1 {
-  margin-bottom: 32px;
-  font-family: var(--font-newsreader), ui-serif, Georgia, serif;
-  font-size: 1.2em;
-  font-weight: 480;
-  letter-spacing: -0.04em;
-  line-height: 1.05;
-}
-
-.note-page p + p {
-  margin-top: 32px;
-}
-
-.note-page a {
-  text-decoration: underline;
-  text-decoration-thickness: 1.5px;
-  text-decoration-color: color-mix(in srgb, currentColor 72%, transparent);
-  text-underline-offset: 3px;
-  transition: color 140ms ease, text-decoration-color 140ms ease;
-}
-
-.note-page a:hover,
-.note-page a:focus-visible {
-  color: var(--color-fg);
-  text-decoration-color: currentColor;
-}
-
-/* Company links — each carries its own hue. On a dark ground the resting tone
-   is the recessed one and hover *brightens*: light is the affordance here, the
-   inverse of the light theme these started in. */
-.note-page .company-link {
-  text-decoration: none;
-  transition: color 160ms ease;
-}
-
-.note-page .company-link--geko {
-  color: #22c55e;
-}
-
-.note-page .company-link--geko:hover,
-.note-page .company-link--geko:focus-visible {
-  color: #4ade80;
-}
-
-/* speko rests in a recessed grey and reveals its blue on touch — the colour is
-   the reward for interacting, not decoration. */
-.note-page .company-link--speko {
-  color: #a4a6b0;
-}
-
-.note-page .company-link--speko:hover,
-.note-page .company-link--speko:focus-visible {
-  color: #4d8dff;
-}
-
-.note-links {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0 8px;
-  margin-top: 48px;
-  font-size: 0.94em;
-  letter-spacing: -0.014em;
-}
-
-.note-links a {
   display: inline-block;
-  text-decoration-color: transparent;
-  transition:
-    transform 160ms ease,
-    color 140ms ease,
-    text-decoration-color 140ms ease;
-}
-
-.note-links a:hover,
-.note-links a:focus-visible {
-  text-decoration-color: currentColor;
+  transition: transform 160ms var(--ease-out, ease-out);
 }
 
 @media (hover: hover) and (pointer: fine) {
-  .note-links a:hover {
-    transform: translateY(-2px);
+  .link-grow:hover {
+    transform: translateY(-1px);
   }
 }
 
-@media (max-width: 560px) {
-  .note-page {
-    padding: 40px 20px 56px;
-  }
-}
-
-/* ── Command palette ──────────────────────────────────────────────
-   Modal, so it scales from center (Emil: modals are exempt from
-   origin-awareness). Enter is composed; exit is faster and tighter. */
-.cmd-backdrop {
-  animation: cmd-fade 160ms ease forwards;
-}
-
-.cmd-panel {
-  animation: cmd-in 200ms var(--ease-out) forwards;
-  transform-origin: center;
-  will-change: transform, opacity;
-}
-
-.cmd-closing .cmd-backdrop {
-  animation: cmd-fade-out 150ms ease forwards;
-}
-
-.cmd-closing .cmd-panel {
-  animation: cmd-out 150ms var(--ease-out) forwards;
-}
-
-@keyframes cmd-fade {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-@keyframes cmd-fade-out {
-  to {
-    opacity: 0;
-  }
-}
-
-/* Never from scale(0) — a balloon has shape even deflated. */
-@keyframes cmd-in {
-  from {
-    opacity: 0;
-    transform: translateY(8px) scale(0.97);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
-}
-
-@keyframes cmd-out {
-  to {
-    opacity: 0;
-    transform: translateY(6px) scale(0.98);
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
-  }
-
-  .reveal,
-  .reveal-soft {
-    opacity: 1;
-    animation: none;
-    transform: none;
-  }
-
-  /* Keep the underline, lose the motion. */
-  .draw::after,
-  .link-draw::after {
-    animation: none;
-    transform: scaleX(1);
-  }
-
-  /* Comprehension stays (opacity), movement goes. */
-  .cmd-panel {
-    animation: cmd-fade 140ms ease forwards;
-  }
-
-  .press:active {
-    transform: none;
-  }
-
-  *,
-  *::before,
-  *::after {
-    transition-duration: 0.01ms !important;
-  }
+.frost {
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
 }

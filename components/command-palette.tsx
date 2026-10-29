@@ -20,7 +20,7 @@ type Action = {
   run: () => void;
 };
 
-const EMAIL = "amirlan@geko.sh";
+const EMAIL = "amirlannk@gmail.com";
 
 function Glyph({ d, stroke = true }: { d: string; stroke?: boolean }) {
   return (
@@ -118,7 +118,7 @@ export function CommandPalette() {
 
       { id: "x", label: "x / twitter", group: "elsewhere", keywords: "twitter social", hint: "@amirlankalm", glyph: <Glyph d={EXTERNAL} />, run: out("https://x.com/amirlankalm") },
       { id: "github", label: "github", group: "elsewhere", keywords: "code repo source", hint: "amirlankalm", glyph: <Glyph d={EXTERNAL} />, run: out("https://github.com/amirlankalm") },
-      { id: "linkedin", label: "linkedin", group: "elsewhere", keywords: "work professional", glyph: <Glyph d={EXTERNAL} />, run: out("https://www.linkedin.com/in/amirlan-kalmukhan-a02ab4366/") },
+      { id: "linkedin", label: "linkedin", group: "elsewhere", keywords: "work professional", glyph: <Glyph d={EXTERNAL} />, run: out("https://www.linkedin.com/in/amirlank") },
     ];
   }, [router, enabled, toggle, copied]);
 

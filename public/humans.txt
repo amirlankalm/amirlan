@@ -1,16 +1,13 @@
 /* TEAM */
 name: Amirlan Kalmukhan
-role: Co-founder at Geko
-organization: Geko — https://geko.sh
-previously: Founding Engineer at Speko (YC S26)
 from: Astana, Kazakhstan
-contact: amirlan [at] geko.sh
-x: @amirlankalm
+contact: amirlannk [at] gmail.com
+previously: Founding Engineer at Speko (YC S26)
 github: amirlankalm
-linkedin: amirlan-kalmukhan-a02ab4366
+linkedin: amirlank
+x: amirlankalm
 
 /* SITE */
 url: https://amirlan.dev
-built with: Next.js 16, Tailwind v4, TypeScript
+built with: Next.js, Tailwind, TypeScript
 deployed on: Vercel
-last update: 2026-08-14

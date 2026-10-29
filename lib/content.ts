@@ -10,32 +10,34 @@ export type Experience = {
 
 export const experiences: Experience[] = [
   {
-    org: "geko",
-    href: "https://geko.sh",
-    role: "co-founder",
-    period: "now",
-  },
-  {
     org: "speko",
     orgDetail: "yc s26",
     href: "https://speko.ai",
     role: "founding engineer",
     period: "previously",
   },
+  {
+    org: "white hill capital",
+    href: "https://whitehillcapital.io",
+    role: "swe intern",
+    period: "previously",
+  },
 ];
 
 export const projects = [
   {
-    name: "geko",
-    href: "https://geko.sh",
-    year: "now",
-    detail: "voice training data + rl envs",
+    name: "euphemia",
+    href: "https://github.com/amirlankalm/euphemia",
+    year: "recent",
+    detail:
+      "an rl environment for the decision a voice agent actually makes: whether to speak, when, and what.",
   },
   {
-    name: "speko",
-    href: "https://speko.ai",
-    year: "previously",
-    detail: "self-healing voice agents",
+    name: "ai research foundations",
+    href: "https://github.com/amirlankalm/ai-research-foundations",
+    year: "recent",
+    detail:
+      "a visual, intuition-first path from basic python to ai research: pytorch, nanogpt, dpo, grpo.",
   },
 ];
 
@@ -71,10 +73,16 @@ export const essays: Essay[] = [
 
 export const socials = [
   {
-    label: "email",
-    href: `mailto:${profile.email}`,
-    display: profile.email,
-    icon: "mail" as const,
+    label: "x",
+    href: "https://x.com/amirlankalm",
+    display: "@amirlankalm",
+    icon: "x" as const,
+  },
+  {
+    label: "linkedin",
+    href: "https://www.linkedin.com/in/amirlank",
+    display: "amirlank",
+    icon: "linkedin" as const,
   },
   {
     label: "github",
@@ -83,21 +91,21 @@ export const socials = [
     icon: "github" as const,
   },
   {
-    label: "x",
-    href: "https://x.com/amirlankalm",
-    display: "@amirlankalm",
-    icon: "x" as const,
-  },
-  {
-    label: "linkedin",
-    href: "https://www.linkedin.com/in/amirlan-kalmukhan-a02ab4366/",
-    display: "amirlan kalmukhan",
-    icon: "linkedin" as const,
+    label: "cal",
+    href: "https://cal.com/amirlan",
+    display: "cal.com/amirlan",
+    icon: "cal" as const,
   },
   {
     label: "instagram",
-    href: "https://instagram.com/amirlannk",
+    href: "https://www.instagram.com/amirlannk/",
     display: "@amirlannk",
     icon: "instagram" as const,
+  },
+  {
+    label: "email",
+    href: `mailto:${profile.email}`,
+    display: profile.email,
+    icon: "mail" as const,
   },
 ];
