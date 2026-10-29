@@ -1,5 +1,6 @@
 import { Metadata } from "next";
 import { SiteFrame } from "@/components/site-frame";
+import { projects } from "@/lib/content";
 
 export const metadata: Metadata = {
   title: "projects · amirlan kalmukhan",
@@ -11,30 +12,18 @@ export default function ProjectsPage() {
     <SiteFrame>
       <section data-panel="projects">
         <div>
-          <div className="project">
-            <a
-              href="https://github.com/amirlankalm/euphemia"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              euphemia
-            </a>
-            <p className="desc">
-              an rl environment for the decision a voice agent actually makes: whether to speak, when, and what.
-            </p>
-          </div>
-          <div className="project">
-            <a
-              href="https://github.com/amirlankalm/ai-research-foundations"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              ai research foundations
-            </a>
-            <p className="desc">
-              a visual, intuition-first path from basic python to ai research: pytorch, nanogpt, dpo, grpo.
-            </p>
-          </div>
+          {projects.map((project) => (
+            <div className="project" key={project.name}>
+              <a
+                href={project.href}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {project.name}
+              </a>
+              <p className="desc">{project.detail}</p>
+            </div>
+          ))}
         </div>
       </section>
     </SiteFrame>

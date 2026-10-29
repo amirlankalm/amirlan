@@ -33,6 +33,13 @@ export const projects = [
       "an rl environment for the decision a voice agent actually makes: whether to speak, when, and what.",
   },
   {
+    name: "resonance",
+    href: "https://github.com/amirlankalm/resonance-public",
+    year: "recent",
+    detail:
+      "an active experimentation and rl environment for scientific physics reasoning.",
+  },
+  {
     name: "ai research foundations",
     href: "https://github.com/amirlankalm/ai-research-foundations",
     year: "recent",
